@@ -14,7 +14,7 @@ namespace ui
 
 namespace
 {
-	const char* const SPLASH_FILENAME = "darksplash.png";
+	const char* const SPLASH_FILENAME = "splash.png";
 }
 
 class wxImagePanel : 

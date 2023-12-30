@@ -13,7 +13,7 @@ namespace ui
 namespace
 {
 	const char* const TAB_NAME = N_("Models");
-	const std::string TAB_ICON("model16green.png");
+	const std::string TAB_ICON("icon_model.png");
     const char* const SELECT_ITEMS = N_("Select entities using this model");
     const char* const DESELECT_ITEMS = N_("Deselect entities using this model");
 }

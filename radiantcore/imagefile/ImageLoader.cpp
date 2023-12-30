@@ -1,7 +1,6 @@
 #include "ImageLoader.h"
 #include "TGALoader.h"
 #include "JPEGLoader.h"
-#include "BMPLoader.h"
 #include "PNGLoader.h"
 #include "dds.h"
 
@@ -39,9 +38,6 @@ ImageLoader::ImageLoader()
 {
     // PNG Loader
     addLoaderToMap(std::make_shared<PNGLoader>());
-
-    // BMP handler
-    addLoaderToMap(std::make_shared<BMPLoader>());
 
     // JPEG handler
     addLoaderToMap(std::make_shared<JPEGLoader>());

@@ -17,8 +17,8 @@ private:
     bool _waveform;
     std::string _filePath;
 
-    const char* const SOUND_MAP_PLACEHOLDER = "soundmap.png";
-    const char* const SOUND_MAP_PLACEHOLDER_WAVE = "soundmap_wave.png";
+    const char* const SOUND_MAP_PLACEHOLDER = "_soundmap.png";
+    const char* const SOUND_MAP_PLACEHOLDER_WAVE = "_soundmap_wave.png";
 
 public:
     SoundMapExpression(bool waveform) :

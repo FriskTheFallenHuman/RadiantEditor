@@ -17,7 +17,7 @@ class ThreadedParticlesLoader final :
 {
 public:
     ThreadedParticlesLoader(const wxutil::DeclarationTreeView::Columns& columns) :
-        ThreadedDeclarationTreePopulator(decl::Type::Particle, columns, "particle16.png")
+        ThreadedDeclarationTreePopulator(decl::Type::Particle, columns, "icon_particle.png")
     {}
 
     ~ThreadedParticlesLoader()

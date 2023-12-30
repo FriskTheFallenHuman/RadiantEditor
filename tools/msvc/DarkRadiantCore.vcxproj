@@ -89,7 +89,6 @@
     <ClCompile Include="..\..\radiantcore\fx\FxDeclaration.cpp" />
     <ClCompile Include="..\..\radiantcore\fx\FxManager.cpp" />
     <ClCompile Include="..\..\radiantcore\grid\GridManager.cpp" />
-    <ClCompile Include="..\..\radiantcore\imagefile\BMPLoader.cpp" />
     <ClCompile Include="..\..\radiantcore\imagefile\dds.cpp" />
     <ClCompile Include="..\..\radiantcore\imagefile\ddslib.cpp" />
     <ClCompile Include="..\..\radiantcore\imagefile\ImageLoader.cpp" />
@@ -127,8 +126,6 @@
     <ClCompile Include="..\..\radiantcore\map\format\primitiveparsers\Patch.cpp" />
     <ClCompile Include="..\..\radiantcore\map\format\primitiveparsers\PatchDef2.cpp" />
     <ClCompile Include="..\..\radiantcore\map\format\primitiveparsers\PatchDef3.cpp" />
-    <ClCompile Include="..\..\radiantcore\map\format\Quake3MapFormat.cpp" />
-    <ClCompile Include="..\..\radiantcore\map\format\Quake3MapReader.cpp" />
     <ClCompile Include="..\..\radiantcore\map\format\Quake4MapFormat.cpp" />
     <ClCompile Include="..\..\radiantcore\map\format\Quake4MapReader.cpp" />
     <ClCompile Include="..\..\radiantcore\map\infofile\InfoFile.cpp" />
@@ -767,7 +764,6 @@
     <ClInclude Include="..\..\radiantcore\decl\DeclarationFile.h" />
     <ClInclude Include="..\..\radiantcore\decl\DeclarationFolderParser.h" />
     <ClInclude Include="..\..\radiantcore\decl\DeclarationManager.h" />
-    <ClInclude Include="..\..\radiantcore\decl\DeclarationStreamParser.h" />
     <ClInclude Include="..\..\radiantcore\decl\FavouriteSet.h" />
     <ClInclude Include="..\..\radiantcore\decl\FavouritesManager.h" />
     <ClInclude Include="..\..\radiantcore\eclass\Doom3ModelDef.h" />
@@ -840,7 +836,6 @@
     <ClInclude Include="..\..\radiantcore\fx\FxManager.h" />
     <ClInclude Include="..\..\radiantcore\grid\GridItem.h" />
     <ClInclude Include="..\..\radiantcore\grid\GridManager.h" />
-    <ClInclude Include="..\..\radiantcore\imagefile\BMPLoader.h" />
     <ClInclude Include="..\..\radiantcore\imagefile\dds.h" />
     <ClInclude Include="..\..\radiantcore\imagefile\ddslib.h" />
     <ClInclude Include="..\..\radiantcore\imagefile\ImageLoader.h" />
@@ -889,9 +884,6 @@
     <ClInclude Include="..\..\radiantcore\map\format\primitivewriters\ExportUtil.h" />
     <ClInclude Include="..\..\radiantcore\map\format\primitivewriters\LegacyBrushDefExporter.h" />
     <ClInclude Include="..\..\radiantcore\map\format\primitivewriters\PatchDefExporter.h" />
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapFormat.h" />
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapReader.h" />
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapWriter.h" />
     <ClInclude Include="..\..\radiantcore\map\format\Quake3Utils.h" />
     <ClInclude Include="..\..\radiantcore\map\format\Quake4MapFormat.h" />
     <ClInclude Include="..\..\radiantcore\map\format\Quake4MapReader.h" />

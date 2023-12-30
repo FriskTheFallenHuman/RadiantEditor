@@ -42,7 +42,7 @@ ModelPropertyEditor::ModelPropertyEditor(wxWindow* parent, IEntitySelection& ent
 
 	// Browse button for particles
 	wxButton* particleButton = new wxButton(mainVBox, wxID_ANY, _("Choose particle..."));
-	particleButton->SetBitmap(wxutil::GetLocalBitmap("particle16.png"));
+	particleButton->SetBitmap(wxutil::GetLocalBitmap("icon_particle.png"));
 	particleButton->Bind(wxEVT_BUTTON, &ModelPropertyEditor::_onParticleButton, this);
 
 	// The panel will use the entire height of the editor frame in the entity inspector

@@ -153,7 +153,7 @@ void FavouritesBrowser::setupCategories()
         nullptr
     });
     _categories.emplace_back(FavouriteCategory{
-        "model", _("Models"), "model16green.png",
+        "model", _("Models"), "icon_model.png",
         _iconList->Add(wxutil::GetLocalBitmap("icon_model.png")),
         nullptr
     });

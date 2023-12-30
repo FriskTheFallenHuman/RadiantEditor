@@ -218,6 +218,15 @@
     <Filter Include="src\fx">
       <UniqueIdentifier>{8090888b-90cb-49eb-b203-f30f0635ab17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\map\format\doom3">
+      <UniqueIdentifier>{223edd8a-f3ba-49d8-b813-efa21c947638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\map\format\quake4">
+      <UniqueIdentifier>{9df9c71a-dfcb-4409-97ed-4920bad032e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\map\aas\doom3">
+      <UniqueIdentifier>{44589555-94e2-4498-b1b6-3565e7b50a83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\radiantcore\modulesystem\ModuleLoader.cpp">
@@ -532,9 +541,6 @@
     <ClCompile Include="..\..\radiantcore\imagefile\JPEGLoader.cpp">
       <Filter>src\imagefile</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\radiantcore\imagefile\BMPLoader.cpp">
-      <Filter>src\imagefile</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\radiantcore\imagefile\PNGLoader.cpp">
       <Filter>src\imagefile</Filter>
     </ClCompile>
@@ -546,30 +552,6 @@
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\layers\LayerModule.cpp">
       <Filter>src\layers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapFormat.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapReader.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapWriter.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Doom3PrefabFormat.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Quake3MapFormat.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Quake3MapReader.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Quake4MapFormat.cpp">
-      <Filter>src\map\format</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\format\Quake4MapReader.cpp">
-      <Filter>src\map\format</Filter>
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\map\format\portable\PortableMapFormat.cpp">
       <Filter>src\map\format\portable</Filter>
@@ -705,15 +687,6 @@
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\map\CounterManager.cpp">
       <Filter>src\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFile.cpp">
-      <Filter>src\map\aas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFileLoader.cpp">
-      <Filter>src\map\aas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFileSettings.cpp">
-      <Filter>src\map\aas</Filter>
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\map\aas\AasFileManager.cpp">
       <Filter>src\map\aas</Filter>
@@ -1173,6 +1146,33 @@
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\skins\Doom3ModelSkin.cpp">
       <Filter>src\skins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapFormat.cpp">
+      <Filter>src\map\format\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapReader.cpp">
+      <Filter>src\map\format\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Doom3MapWriter.cpp">
+      <Filter>src\map\format\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Doom3PrefabFormat.cpp">
+      <Filter>src\map\format\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Quake4MapFormat.cpp">
+      <Filter>src\map\format\quake4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\format\Quake4MapReader.cpp">
+      <Filter>src\map\format\quake4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFile.cpp">
+      <Filter>src\map\aas\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFileLoader.cpp">
+      <Filter>src\map\aas\doom3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\radiantcore\map\aas\Doom3AasFileSettings.cpp">
+      <Filter>src\map\aas\doom3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1644,9 +1644,6 @@
     <ClInclude Include="..\..\radiantcore\imagefile\JPEGLoader.h">
       <Filter>src\imagefile</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\radiantcore\imagefile\BMPLoader.h">
-      <Filter>src\imagefile</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\radiantcore\imagefile\PNGLoader.h">
       <Filter>src\imagefile</Filter>
     </ClInclude>
@@ -1667,36 +1664,6 @@
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\layers\SetLayerSelectedWalker.h">
       <Filter>src\layers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapFormat.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapReader.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapWriter.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Doom3PrefabFormat.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapFormat.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapReader.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake3MapWriter.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapFormat.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapReader.h">
-      <Filter>src\map\format</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapWriter.h">
-      <Filter>src\map\format</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\map\format\portable\Constants.h">
       <Filter>src\map\format\portable</Filter>
@@ -1796,15 +1763,6 @@
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\map\CounterManager.h">
       <Filter>src\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFile.h">
-      <Filter>src\map\aas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFileLoader.h">
-      <Filter>src\map\aas</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFileSettings.h">
-      <Filter>src\map\aas</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\map\aas\Util.h">
       <Filter>src\map\aas</Filter>
@@ -2376,9 +2334,6 @@
     <ClInclude Include="..\..\radiantcore\decl\DeclarationFile.h">
       <Filter>src\decl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\radiantcore\decl\DeclarationStreamParser.h">
-      <Filter>src\decl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\radiantcore\decl\DeclarationFolderParser.h">
       <Filter>src\decl</Filter>
     </ClInclude>
@@ -2414,6 +2369,36 @@
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\selection\SceneSelectionTesters.h">
       <Filter>src\selection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapFormat.h">
+      <Filter>src\map\format\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapReader.h">
+      <Filter>src\map\format\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Doom3MapWriter.h">
+      <Filter>src\map\format\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Doom3PrefabFormat.h">
+      <Filter>src\map\format\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapFormat.h">
+      <Filter>src\map\format\quake4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapReader.h">
+      <Filter>src\map\format\quake4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\format\Quake4MapWriter.h">
+      <Filter>src\map\format\quake4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFile.h">
+      <Filter>src\map\aas\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFileLoader.h">
+      <Filter>src\map\aas\doom3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\radiantcore\map\aas\Doom3AasFileSettings.h">
+      <Filter>src\map\aas\doom3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ private:
     bool _looping;
     std::string _filePath;
 
-    const char* const VIDEO_MAP_PLACEHOLDER = "videomap.png";
+    const char* const VIDEO_MAP_PLACEHOLDER = "_videomap.png";
 
 public:
     VideoMapExpression(const std::string& filePath, bool looping) :

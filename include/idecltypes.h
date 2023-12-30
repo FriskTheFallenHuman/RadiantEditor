@@ -17,6 +17,7 @@ enum class Type
     Undetermined = -2,
     None = -1,
     Material = 0,
+    Guide = 1,
     Table,
     EntityDef,
     SoundShader,
@@ -37,6 +38,7 @@ inline std::string getTypeName(Type type)
     case Type::Undetermined: return "Undetermined";
     case Type::None: return "None";
     case Type::Material: return "Material";
+    case Type::Guide: return "Guide";
     case Type::Table: return "Table";
     case Type::EntityDef: return "EntityDef";
     case Type::SoundShader: return "SoundShader";

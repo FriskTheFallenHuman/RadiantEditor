@@ -15,7 +15,7 @@ namespace ui
 /* CONSTANTS */
 namespace
 {
-	constexpr const char* MODEL_ICON = "model16green.png";
+	constexpr const char* MODEL_ICON = "icon_model.png";
 	constexpr const char* SKIN_ICON = "skin16.png";
 	constexpr const char* FOLDER_ICON = "folder16.png";
 }

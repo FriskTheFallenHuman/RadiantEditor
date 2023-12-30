@@ -48,9 +48,9 @@ namespace {
     const char* PLACE_PLAYERSTART_TEXT = N_("Place Player Start here");
     const char* PLACE_PLAYERSTART_ICON = "player_start16.png";
     const char* ADD_MODEL_TEXT = N_("Create Model...");
-    const char* ADD_MODEL_ICON = "model16green.png";
+    const char* ADD_MODEL_ICON = "icon_model.png";
     const char* ADD_PARTICLE_TEXT = N_("Create Particle...");
-    const char* ADD_PARTICLE_ICON = "particle16.png";
+    const char* ADD_PARTICLE_ICON = "icon_particle.png";
     const char* ADD_MONSTERCLIP_TEXT = N_("Surround with Monsterclip");
     const char* ADD_MONSTERCLIP_ICON = "monsterclip16.png";
     const char* ADD_LIGHT_TEXT = N_("Create Light...");

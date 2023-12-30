@@ -10,8 +10,8 @@
 		<menuItem name="loadprefab" caption="Import &amp;Prefab..." command="LoadPrefab" />
 		<menuSeparator />
 		<menuItem name="save" caption="&amp;Save" command="SaveMap" icon="file_save.png" />
-		<menuItem name="saveas" caption="Save &amp;as..." command="SaveMapAs" />
-		<menuItem name="saveCopyAs" caption="Save &amp;copy as..." command="SaveMapCopyAs" />
+		<menuItem name="saveas" caption="Save &amp;as..." command="SaveMapAs" icon="file_saveas.png" />
+		<menuItem name="saveCopyAs" caption="Save &amp;copy as..." command="SaveMapCopyAs" icon="file_savecopyas.png" />
 		<menuSeparator />
 		<menuItem name="exportMap" caption="Export Map..." command="ExportMap" />
 		<menuItem name="saveSelected" caption="Export selected as Map..." command="SaveSelected" />
@@ -24,8 +24,8 @@
 		<menuSeparator />
 		<menuItem name="reloadDecls" caption="Reload Declarations" command="ReloadDecls" icon="decl.png" />
 		<menuItem name="reloadImages" caption="Reload Images" command="ReloadImages" icon="icon_texture.png" />
-		<menuItem name="refreshModels" caption="&amp;Reload Models" command="RefreshModels" icon="model16green.png" />
-		<menuItem name="refreshSelectedModels" caption="Reload Selected Models" command="RefreshSelectedModels" icon="model16green.png" />
+		<menuItem name="refreshModels" caption="&amp;Reload Models" command="RefreshModels" icon="icon_model.png" />
+		<menuItem name="refreshSelectedModels" caption="Selected Models" command="RefreshSelectedModels" icon="icon_model.png" />
 		<menuSeparator />
 		<menuItem name="gameSelector" caption="&amp;Game/Project Setup..." command="ProjectSettings" />
 		<menuSeparator />
@@ -36,15 +36,16 @@
 	</subMenu>
 
 	<subMenu name="edit" caption="&amp;Edit">
-		<menuItem name="undo" caption="&amp;Undo" command="Undo" />
-		<menuItem name="redo" caption="&amp;Redo" command="Redo" />
+		<menuItem name="undo" caption="&amp;Undo" command="Undo" icon="edit_undo.png" />
+		<menuItem name="redo" caption="&amp;Redo" command="Redo" icon="edit_redo.png" />
 		<menuSeparator />
-		<menuItem name="copy" caption="&amp;Copy" command="Copy" />
-		<menuItem name="paste" caption="&amp;Paste" command="Paste" />
-		<menuItem name="pasteToCamera" caption="Paste to Camera" command="PasteToCamera" />
+		<menuItem name="copy" caption="&amp;Copy" command="Copy" icon="edit_copy.png" />
+		<menuItem name="paste" caption="&amp;Paste" command="Paste" icon="edit_paste.png" />
+		<menuItem name="pasteToCamera" caption="Paste to Camera" command="PasteToCamera" icon="edit_paste.png" />
+		<menuItem name="cut" caption="Cut" command="Cut" icon="edit_cut.png" />
 		<menuSeparator />
-		<menuItem name="duplicate" caption="&amp;Duplicate" command="CloneSelection" />
-		<menuItem name="delete" caption="D&amp;elete" command="DeleteSelection" />
+		<menuItem name="duplicate" caption="&amp;Duplicate" command="CloneSelection" icon="edit_duplicate.png" />
+		<menuItem name="delete" caption="D&amp;elete" command="DeleteSelection" icon="edit_delete.png" />
 		<menuSeparator />
 		<menuItem name="groupSelected" caption="Group Selection" command="GroupSelected" icon="group_selection.png" />
 		<menuItem name="ungroupSelected" caption="Ungroup Selection" command="UngroupSelected" icon="ungroup_selection.png" />
@@ -53,9 +54,9 @@
 		<menuItem name="parenttoworldspawn" caption="Reparent Primitives to &amp;Worldspawn" command="ParentSelectionToWorldspawn" />
 		<menuItem name="mergeentities" caption="Merge selected Entities" command="MergeSelectedEntities" icon="cmenu_merge_entities.png" />
 		<menuSeparator />
-		<menuItem name="copyShader" caption="Copy Shader" command="CopyShader" />
-		<menuItem name="pasteShader" caption="Paste Shader" command="PasteShader" />
-		<menuItem name="pasteShaderNatural" caption="Paste Shader (Natural)" command="PasteShaderNatural" />
+		<menuItem name="copyShader" caption="Copy Shader" command="CopyShader" icon="edit_copy.png" />
+		<menuItem name="pasteShader" caption="Paste Shader" command="PasteShader" icon="edit_paste.png" />
+		<menuItem name="pasteShaderNatural" caption="Paste Shader (Natural)" command="PasteShaderNatural" icon="edit_paste.png" />
 		<menuSeparator />
 		<menuItem name="clearSelection" caption="C&amp;lear selection" command="UnSelectSelection" />
 		<menuItem name="invertSelection" caption="&amp;Invert selection" command="InvertSelection" />
@@ -68,9 +69,9 @@
 		<menuItem name="selectionSiblings" caption="Expand selection to all Siblings" command="ExpandSelectionToSiblings" />
 		<menuItem name="selectalloftype" caption="Select all of type" command="SelectAllOfType" />
 		<menuSeparator />
-		<menuItem name="shortcuts" caption="Keyboard Shortcuts..." command="ShowCommandList" />
-    <menuItem name="mousetoolbindings" caption="Mouse Bindings..." command="MouseToolMappingDialog" />
-		<menuItem name="preferences" caption="Pre&amp;ferences..." command="Preferences" />
+		<menuItem name="shortcuts" caption="Keyboard Shortcuts..." command="ShowCommandList" icon="settings_keybings.png" />
+		<menuItem name="mousetoolbindings" caption="Mouse Bindings..." command="MouseToolMappingDialog" icon="settings_keybings.png" />
+		<menuItem name="preferences" caption="Pre&amp;ferences..." command="Preferences" icon="settings_app.png" />
 	</subMenu>
 
 	<subMenu name="view" caption="V&amp;iew">
@@ -190,8 +191,8 @@
 	</subMenu>
 
 	<subMenu name="map" caption="M&amp;ap">
-		<menuItem name="findBrush" caption="Find brush..." command="FindBrush" />
-    <menuItem name="findReplaceTextures" caption="Find and replace textures..." icon="texwindow_findandreplace.png" command="ToggleFindAndReplaceMaterial" />
+		<menuItem name="findBrush" caption="Find brush..." command="FindBrush" icon="texwindow_find.png" />
+		<menuItem name="findReplaceTextures" caption="Find and replace textures..." icon="texwindow_findandreplace.png" command="ToggleFindAndReplaceMaterial" />
 		<menuItem name="mapinfo" caption="Map info..." command="MapInfo" />
 		<menuItem name="skinEditor" caption="Skin Editor..." command="SkinEditor" icon="icon_skin.png" />
 	</subMenu>
@@ -202,7 +203,7 @@
 		<menuItem name="bindEntity" caption="&amp;Bind selected entities" command="BindSelection" />
 		<menuItem name="animviewer" caption="MD5 Animation Viewer" command="AnimationPreview" />
 		<menuItem name="entityclasstree" caption="Entity Class Tree..." command="EntityClassTree" icon="icon_classname.png" />
-		<menuItem name="particleEditor" caption="Particle Editor..." command="ParticlesEditor" icon="particle16.png" />
+		<menuItem name="particleEditor" caption="Particle Editor..." command="ParticlesEditor" icon="icon_particle.png" />
 	</subMenu>
 
 	<subMenu name="brush" caption="B&amp;rush">
@@ -313,10 +314,10 @@
 	</subMenu>
 
 	<subMenu name="help" caption="&amp;Help">
-		<menuItem name="about" caption="&amp;About" command="About" />
-        <menuItem name="openForumLink" caption="&amp;Community Forum" command="OpenForumUrl" />
-        <menuItem name="openScriptRef" caption="&amp;Script Reference Wiki Article" command="OpenScriptReference" />
-		<menuItem name="userGuide" caption="&amp;User Guide (Online)" command="ShowUserGuide" />
-		<menuItem name="userGuideLocal" caption="&amp;User Guide (Local)" command="ShowOfflineUserGuide" />
+		<menuItem name="about" caption="&amp;About" command="About" icon="helpicon.png" />
+        <menuItem name="openForumLink" caption="&amp;Community Forum" command="OpenForumUrl" icon="help_website.png" />
+        <menuItem name="openScriptRef" caption="&amp;Script Reference Wiki Article" command="OpenScriptReference" icon="help_website.png" />
+		<menuItem name="userGuide" caption="&amp;User Guide (Online)" command="ShowUserGuide" icon="help_website.png" />
+		<menuItem name="userGuideLocal" caption="&amp;User Guide (Local)" command="ShowOfflineUserGuide" icon="help_website.png" />
 	</subMenu>
 </menu>

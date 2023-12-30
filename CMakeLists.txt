@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Project name and version
-project(darkradiant VERSION 3.8.0)
+project(radianteditor VERSION 3.8.0)
 
 # C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -13,7 +13,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_
 endif()
 
 # Expose some build options
-option(ENABLE_DM_PLUGINS "Build Dark Mod specific plugins" ON)
 option(ENABLE_RELOCATION
        "Avoid hard-coded absolute paths to libraries or resources"
        ON)
@@ -105,17 +104,6 @@ if (${LIBGIT_FOUND})
     add_subdirectory(plugins/vcs)
 endif()
 
-# Dark Mod plugins
-if (${ENABLE_DM_PLUGINS})
-    add_subdirectory(plugins/dm.conversation)
-    add_subdirectory(plugins/dm.stimresponse)
-    add_subdirectory(plugins/dm.objectives)
-    add_subdirectory(plugins/dm.difficulty)
-    add_subdirectory(plugins/dm.editing)
-    add_subdirectory(plugins/dm.gui)
-    add_subdirectory(plugins/dm.gameconnection)
-endif()
-
 # Main radiant components
 add_subdirectory(radiantcore)
 add_subdirectory(radiant)
@@ -143,21 +131,14 @@ install(TARGETS darkradiant math xmlutil scenegraph wxutil
 install(TARGETS radiantcore script sound
         LIBRARY DESTINATION ${PKGLIBDIR}/modules)
 
-# Install Dark Mod plugins
-if (${ENABLE_DM_PLUGINS})
-    install(TARGETS dm_stimresponse dm_objectives dm_difficulty dm_editing
-                    dm_gui dm_gameconnection dm_conversation
-            LIBRARY DESTINATION ${PKGLIBDIR}/plugins)
-endif()
-
 if (${LIBGIT_FOUND})
     install(TARGETS vcs
             LIBRARY DESTINATION ${PKGLIBDIR}/plugins)
 endif()
 
 # Generate and install the .desktop file
-configure_file(install/darkradiant.desktop.in install/darkradiant.desktop)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/install/darkradiant.desktop
+configure_file(install/radianteditor.desktop install/radiant.desktop)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/install/radiant.desktop
         DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 
 # Install resources
@@ -177,7 +158,7 @@ install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/darkradiant_icon_64x64.png
 install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/darkradiant_icon_128x128.png
         DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/128x128/apps
         RENAME net.darkradiant.DarkRadiant.png)
-install(FILES ${PROJECT_SOURCE_DIR}/install/net.darkradiant.DarkRadiant.metainfo.xml
+install(FILES ${PROJECT_SOURCE_DIR}/install/net.radianteditor.RadiantEditor.metainfo
         DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
 
 # Install locale data

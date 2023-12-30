@@ -77,7 +77,7 @@ void BuiltInShader::construct()
     {
         // Render a custom texture
         auto imgPath = module::GlobalModuleRegistry().getApplicationContext().getBitmapsPath();
-        imgPath += "missing_model.tga";
+        imgPath += "_missing_model.tga";
 
         auto editorTex = GlobalMaterialManager().loadTextureFromFile(imgPath);
 

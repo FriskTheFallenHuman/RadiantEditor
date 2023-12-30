@@ -43,7 +43,7 @@
 									<flag>wxALIGN_CENTER_VERTICAL</flag>
 									<border>0</border>
 									<object class="wxBitmapButton" name="ShiftLeftButton">
-										<bitmap stock_id="darkradiant:arrow_left_blue.png" stock_client="">undefined.png</bitmap>
+										<bitmap stock_id="darkradiant:arrow_left_green.png" stock_client="">undefined.png</bitmap>
 										<default>0</default>
 									</object>
 								</object>
@@ -58,7 +58,7 @@
 											<flag>wxALIGN_CENTER</flag>
 											<border>0</border>
 											<object class="wxBitmapButton" name="ShiftUpButton">
-												<bitmap stock_id="darkradiant:arrow_up_blue.png" stock_client="">undefined.png</bitmap>
+												<bitmap stock_id="darkradiant:arrow_up_green.png" stock_client="">undefined.png</bitmap>
 												<default>0</default>
 											</object>
 										</object>
@@ -67,7 +67,7 @@
 											<flag>wxALIGN_CENTER</flag>
 											<border>0</border>
 											<object class="wxBitmapButton" name="ShiftDownButton">
-												<bitmap stock_id="darkradiant:arrow_down_blue.png" stock_client="">undefined.png</bitmap>
+												<bitmap stock_id="darkradiant:arrow_down_green.png" stock_client="">undefined.png</bitmap>
 												<default>0</default>
 											</object>
 										</object>
@@ -78,7 +78,7 @@
 									<flag>wxALIGN_CENTER_VERTICAL</flag>
 									<border>0</border>
 									<object class="wxBitmapButton" name="ShiftRightButton">
-										<bitmap stock_id="darkradiant:arrow_right_blue.png" stock_client="">undefined.png</bitmap>
+										<bitmap stock_id="darkradiant:arrow_right_green.png" stock_client="">undefined.png</bitmap>
 										<default>0</default>
 									</object>
 								</object>

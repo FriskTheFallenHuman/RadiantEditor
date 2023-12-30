@@ -122,7 +122,7 @@ D3DeclarationViewCtrl::D3DeclarationViewCtrl(wxWindow* parent) :
 	SetStyleMapping(18, Error);
 };
 
-// D3 & TDM materials
+// Idtech4 materials
 
 D3MaterialSourceViewCtrl::D3MaterialSourceViewCtrl(wxWindow* parent) :
 	D3DeclarationViewCtrl(parent)
@@ -141,7 +141,7 @@ D3MaterialSourceViewCtrl::D3MaterialSourceViewCtrl(wxWindow* parent) :
 		"inverseVertexColor privatePolygonOffset texGen scroll translate scale centerScale shear "
 		"rotate maskRed maskGreen maskBlue maskAlpha maskColor maskDepth alphatest red green blue "
 		"alpha rgb rgba color colored fragmentProgram vertexProgram program vertexParm fragmentMap megatexture "
-        "PARTICLE_MACRO GLASS_MACRO TWOSIDED_DECAL_MACRO ambientRimColor ambientCubicLight cubicLight "
+        "PARTICLE_MACRO GLASS_MACRO TWOSIDED_DECAL_MACRO cubicLight "
         "afterFog lightFalloffCubeMap ignoreDepth");
 
 	SetKeyWords(1, "_white _flat _black gl_src_alpha gl_one_minus_src_alpha gl_one gl_dst_color "
@@ -151,7 +151,7 @@ D3MaterialSourceViewCtrl::D3MaterialSourceViewCtrl(wxWindow* parent) :
 		"parm6 parm7 parm8 parm9 parm10 parm11 global0 global1 global2 global3 global4 global5 global6 global7 ");
 };
 
-// D3 sound shader
+// Idtech4 sound shader
 
 D3SoundShaderSourceViewCtrl::D3SoundShaderSourceViewCtrl(wxWindow* parent) :
 	D3DeclarationViewCtrl(parent)
@@ -164,7 +164,7 @@ D3SoundShaderSourceViewCtrl::D3SoundShaderSourceViewCtrl(wxWindow* parent) :
 	SetKeyWords(1, "");
 };
 
-// D3 Particles
+// IdTech4 Particles
 
 D3ParticleSourceViewCtrl::D3ParticleSourceViewCtrl(wxWindow* parent) :
 	D3DeclarationViewCtrl(parent)
@@ -178,7 +178,7 @@ D3ParticleSourceViewCtrl::D3ParticleSourceViewCtrl(wxWindow* parent) :
         "flies orbit drip to");
 };
 
-// D3 ModelDefs
+// Idtech4 ModelDefs
 
 D3ModelDefSourceViewCtrl::D3ModelDefSourceViewCtrl(wxWindow* parent) :
     D3DeclarationViewCtrl(parent)

@@ -23,7 +23,7 @@ class ThreadedModelDefLoader final :
 {
 public:
     ThreadedModelDefLoader(const wxutil::DeclarationTreeView::Columns& columns) :
-        ThreadedDeclarationTreePopulator(decl::Type::ModelDef, columns, "model16green.png")
+        ThreadedDeclarationTreePopulator(decl::Type::ModelDef, columns, "icon_model.png")
     {}
 
     ~ThreadedModelDefLoader() override

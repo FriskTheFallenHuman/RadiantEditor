@@ -415,10 +415,10 @@ void SurfaceInspector::populateWindow()
 	dialogVBox->Add(table.getSizer(), 0, wxEXPAND | wxLEFT, 18); // 18 pixels left indentation
 
 	// Initial parameter editing rows
-    _manipulators[HSHIFT] = createManipulatorRow(_(LABEL_HSHIFT), table, "arrow_left_blue.png",
-                                                 "arrow_right_blue.png");
-    _manipulators[VSHIFT] = createManipulatorRow(_(LABEL_VSHIFT), table, "arrow_down_blue.png",
-                                                 "arrow_up_blue.png");
+    _manipulators[HSHIFT] = createManipulatorRow(_(LABEL_HSHIFT), table, "arrow_left_green.png",
+                                                 "arrow_right_green.png");
+    _manipulators[VSHIFT] = createManipulatorRow(_(LABEL_VSHIFT), table, "arrow_down_green.png",
+                                                 "arrow_up_green.png");
     _manipulators[ROTATION] = createManipulatorRow(_(LABEL_ROTATION), table, "rotate_cw.png",
                                                    "rotate_ccw.png");
 

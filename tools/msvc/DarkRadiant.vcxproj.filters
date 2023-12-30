@@ -403,9 +403,6 @@
     <ClCompile Include="..\..\radiant\ui\prefdialog\GameSetupPage.cpp">
       <Filter>src\ui\prefdialog</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\radiant\ui\prefdialog\GameSetupPageTdm.cpp">
-      <Filter>src\ui\prefdialog</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\radiant\ui\eclasstree\EClassTree.cpp">
       <Filter>src\ui\eclasstree</Filter>
     </ClCompile>
@@ -976,9 +973,6 @@
       <Filter>src\ui\prefdialog</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiant\ui\prefdialog\GameSetupPage.h">
-      <Filter>src\ui\prefdialog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiant\ui\prefdialog\GameSetupPageTdm.h">
       <Filter>src\ui\prefdialog</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiant\ui\eclasstree\EClassTree.h">
