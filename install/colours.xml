@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <colourschemes>
-	<colourscheme name="DarkRadiant Default" readonly="1" active="1" version="1.0">
+	<colourscheme name="RadiantEditor Default" readonly="1" active="1" version="1.0">
  		<colour name="texture_background" value="0.25 0.25 0.25" />
 		<colour name="grid_background" value="1 1 1" />
 		<colour name="grid_major" value="0.5 0.5 0.5" />

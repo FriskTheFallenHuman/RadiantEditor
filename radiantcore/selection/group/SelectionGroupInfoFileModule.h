@@ -9,7 +9,7 @@ namespace selection
 
 /**
  * Info file module importing/exporting the selection group info
- * to the .darkradiant file of persistence between mapping sessions.
+ * to the .project file of persistence between mapping sessions.
  */
 class SelectionGroupInfoFileModule :
 	public map::IMapInfoFileModule

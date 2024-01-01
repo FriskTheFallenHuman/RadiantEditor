@@ -33,7 +33,7 @@
     <colour name="workzone" value="1 0 0"/>
     <colour name="xyview_crosshairs" value="0.2 0.9 0.2"/>
   </colourscheme>
-  <colourscheme name="DarkRadiant Default" version="1.0">
+  <colourscheme name="RadiantEditor Default" version="1.0">
     <colour name="active_view_name" value="0.5 0 0.75"/>
     <colour name="axis_x" value="1 0 0"/>
     <colour name="axis_y" value="0 1 0"/>

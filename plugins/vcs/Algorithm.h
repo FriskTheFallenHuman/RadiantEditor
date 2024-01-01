@@ -330,7 +330,7 @@ inline void syncWithRemote(const std::shared_ptr<Repository>& repository)
         // A map merge is required
         wxutil::Messagebox::Show(_("Map Merge Required"),
             _("The map has been changed both on the server and locally.\n"
-                "DarkRadiant will now switch to Merge Mode to highlight the differences.\n"
+                "RadiantEditor will now switch to Merge Mode to highlight the differences.\n"
                 "Please have a look, resolve possible conflicts and finish the merge."),
             ::ui::IDialog::MessageType::MESSAGE_CONFIRM);
 

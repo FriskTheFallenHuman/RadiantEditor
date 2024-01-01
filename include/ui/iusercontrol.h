@@ -10,7 +10,7 @@ namespace ui
 
 /**
  * User control interface, to be implemented by all widgets that
- * can be packed into DarkRadiant's main frame or group dialog tabs.
+ * can be packed into RadiantEditor's main frame or group dialog tabs.
  */
 class IUserControl
 {

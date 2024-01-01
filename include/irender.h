@@ -569,7 +569,7 @@ public:
     virtual ITextRenderer::Ptr captureTextRenderer(IGLFont::Style style, std::size_t size) = 0;
 
     /**
-     * Acquire one of DarkRadiant's built-in shaders, used for drawing
+     * Acquire one of RadiantEditor's built-in shaders, used for drawing
      * things like connectors, lines, points and overlays.
      */
     virtual ShaderPtr capture(BuiltInShaderType type) = 0;

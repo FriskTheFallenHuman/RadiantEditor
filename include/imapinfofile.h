@@ -17,7 +17,7 @@ typedef std::map<NodeIndexPair, scene::INodePtr> NodeIndexMap;
 
 /**
  * An info file module is allowed to write text-based information
- * to the auxiliary .darkradiant file that is written alongside to the 
+ * to the auxiliary .project file that is written alongside to the 
  * game-compatible .map file. Things like layer or selection set/group
  * information can be stored persistently between mapping sessions this way.
  *

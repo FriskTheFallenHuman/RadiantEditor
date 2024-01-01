@@ -6,8 +6,8 @@
 #include "wxutil/XmlResourceBasedWidget.h"
 
 /**
- * greebo: The AboutDialog displays information about DarkRadiant and
- * the subsystems OpenGL and GTK+.
+ * greebo: The AboutDialog displays information about RadiantEditor and
+ * the subsystems OpenGL and wxWidgets.
  */
 namespace ui
 {

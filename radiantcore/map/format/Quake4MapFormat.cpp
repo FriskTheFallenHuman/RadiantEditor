@@ -68,7 +68,7 @@ IMapWriterPtr Quake4MapFormat::getMapWriter() const
 
 bool Quake4MapFormat::allowInfoFileCreation() const
 {
-	// allow .darkradiant files to be saved
+	// allow .project files to be saved
 	return true;
 }
 

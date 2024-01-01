@@ -2,7 +2,7 @@ __commandName__ = 'findDuplicateEntities'
 __commandDisplayName__ = 'Find Duplicate Entities'
 
 if __executeCommand__:
-    import darkradiant as dr
+    import radiant as dr
 
     class EntityCache(dr.SceneNodeVisitor):
         entities = []

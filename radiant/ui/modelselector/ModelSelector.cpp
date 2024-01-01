@@ -417,7 +417,7 @@ wxWindow* ModelSelector::setupTreeViewToolbar(wxWindow* parent)
     // skins in the tree.
     auto* toolbar = new wxutil::ResourceTreeViewToolbar(parent, _treeView);
     _showSkinsBtn = new wxBitmapToggleButton(toolbar, wxID_ANY,
-                                             wxutil::GetLocalBitmap("skin16.png"));
+                                             wxutil::GetLocalBitmap("icon_skin.png"));
     _showSkinsBtn->SetValue(true);
     _showSkinsBtn->SetToolTip(_("List model skins in the tree underneath their associated models"));
     _showSkinsBtn->Bind(wxEVT_TOGGLEBUTTON,

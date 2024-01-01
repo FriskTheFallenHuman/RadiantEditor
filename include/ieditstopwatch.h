@@ -8,7 +8,7 @@ namespace map
 
 /**
 * Stopwatch to measure the time spent editing a particular map.
-* The time is persisted to the .darkradiant/.mapx file and keeps running
+* The time is persisted to the .project/.mapx file and keeps running
 * as long as the application is in focus.
 *
 * The class will maintain its own internal timer class, but will broadcast

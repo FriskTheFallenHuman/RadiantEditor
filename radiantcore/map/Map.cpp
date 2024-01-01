@@ -1563,7 +1563,7 @@ void Map::shutdownModule()
 
 void Map::handleShutdownRequest(radiant::ApplicationShutdownRequest& request)
 {
-    if (!askForSave(_("Exit DarkRadiant")))
+    if (!askForSave(_("Exit RadiantEditor")))
     {
         request.deny();
     }

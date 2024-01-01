@@ -1,17 +1,16 @@
 [Desktop Entry]
 Version=1.0
-Name=DarkRadiant
+Name=RadiantEditor
 GenericName=Level editor
-Keywords=doom;doom3;idtech;level;map;the dark mod;game development;
+Keywords=doom;doom3;idtech;level;map;game development;
 
-Comment=3D level editor for The Dark Mod and Doom 3
-Comment[de]=3D Level Editor für The Dark Mod und Doom 3
+Comment=3D level editor for IdTech4 games
 
-Icon=net.darkradiant.DarkRadiant
+Icon=net.radianteditor.RadiantEditor
 
 # The %f means a single, local, absolute file. Remote files will be
 # first copied in a local temp location and then given to the program:
-Exec=@CMAKE_INSTALL_PREFIX@/bin/darkradiant %f
+Exec=@CMAKE_INSTALL_PREFIX@/bin/radianteditor %f
 
 Terminal=false
 

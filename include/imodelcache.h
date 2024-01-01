@@ -37,7 +37,7 @@ public:
 	 */
 	virtual IModelPtr getModel(const std::string& modelPath) = 0;
 
-    // Loads a model from the static resources in DarkRadiant's runtime data/resources folder
+    // Loads a model from the static resources in RadiantEditor's runtime data/resources folder
     virtual scene::INodePtr getModelNodeForStaticResource(const std::string& resourcePath) = 0;
 
 	// This reloads all models in the map

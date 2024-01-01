@@ -48,7 +48,7 @@ wxDEFINE_EVENT(EV_RadiantStartup, wxCommandEvent);
 /**
  * Implements wxWidget's ArtProvider interface to allow custom stock item IDs for
  * bitmaps used in toolbars and other controls. The schema for these custom ArtIDs
- * is "darkradiant:filename.png" where filename.png is a file in DR's bitmap folder.
+ * is "radianteditor:filename.png" where filename.png is a file in DR's bitmap folder.
  * This schema is also valid when specified in XRC files.
  */
 class RadiantApp::ArtProvider final: public wxArtProvider
@@ -68,7 +68,7 @@ public:
         auto filename = id.ToStdString();
         const auto& prefix = ArtIdPrefix();
 
-        // We listen only to "darkradiant" art IDs
+        // We listen only to "radianteditor" art IDs
         if (string::starts_with(filename, prefix))
         {
             auto filePath = _searchPath + filename.substr(prefix.length());
@@ -93,7 +93,7 @@ public:
 
     static const std::string& ArtIdPrefix()
     {
-        static std::string _artIdPrefix = "darkradiant:";
+        static std::string _artIdPrefix = "radianteditor:";
         return _artIdPrefix;
     }
 };
@@ -253,7 +253,7 @@ bool RadiantApp::OnExceptionInMainLoop()
 	catch (const std::exception& ex)
 	{
 		rError() << "Unhandled Exception: " << ex.what() << std::endl;
-        radiant::PopupErrorHandler::HandleError(_("Real Hard DarkRadiant Failure"), 
+        radiant::PopupErrorHandler::HandleError(_("Real Hard RadiantEditor Failure"), 
             std::string(ex.what()) + "\n\n" + _("Break into the debugger?"));
 	}
 

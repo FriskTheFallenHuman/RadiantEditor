@@ -122,7 +122,7 @@ TexturePtr GLTextureManager::loadStandardTexture(const std::string& filename)
     // Create the texture path
     std::string fullpath = module::GlobalModuleRegistry().getApplicationContext().getBitmapsPath() + filename;
 
-    // load the image with the ImageFileLoader (which can handle .bmp)
+    // load the image with the ImageFileLoader.
     ImagePtr img = GlobalImageLoader().imageFromFile(fullpath);
 
     if (img)

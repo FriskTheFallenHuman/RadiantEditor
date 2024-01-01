@@ -16,7 +16,7 @@ namespace ui
 {
 
 TopLevelFrame::TopLevelFrame() :
-	wxFrame(nullptr, wxID_ANY, wxT("DarkRadiant")),
+	wxFrame(nullptr, wxID_ANY, wxT("RadiantEditor")),
 	_topLevelContainer(nullptr),
 	_mainContainer(nullptr)
 {
@@ -81,7 +81,7 @@ TopLevelFrame::TopLevelFrame() :
 
 	// Set the window icon
 	wxIcon appIcon;
-	appIcon.CopyFromBitmap(wxutil::GetLocalBitmap("darkradiant_icon_64x64.png"));
+	appIcon.CopyFromBitmap(wxutil::GetLocalBitmap("radianteditor_icon_64x64.png"));
 	SetIcon(appIcon);
 
     // Redirect scroll events to the window below the cursor

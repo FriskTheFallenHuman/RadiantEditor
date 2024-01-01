@@ -1,5 +1,5 @@
 import os
-import darkradiant as dr
+import radiant as rt
 
 # Some interface tests
 

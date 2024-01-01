@@ -1,36 +1,29 @@
-Source: darkradiant
+Source: radianteditor
 Section: editors
 Priority: optional
 Maintainer: Matthew Mott <orbweaver3d@gmail.com>
 Build-Depends: debhelper (>= 10), cmake (>= 3.12), pkg-config, asciidoctor, libxml2-dev, libglew-dev, python3-dev, libvorbis-dev, libopenal-dev, libalut-dev, libjpeg-dev, libftgl-dev, libwxbase3.0-dev, libwxgtk3.0-gtk3-dev, libsigc++-2.0-dev, libglib2.0-dev, libeigen3-dev, libgit2-dev
-Homepage: https://www.darkradiant.net/
-Vcs-Git: https://gitlab.com/orbweaver/DarkRadiant.git
+Homepage: https://github.com/FriskTheFallenHuman/RadiantEditor
+Vcs-Git: https://github.com/FriskTheFallenHuman/RadiantEditor.git
 Standards-Version: 4.5.1
 
-Package: darkradiant
+Package: radianteditor
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Level editor for Doom 3 and The Dark Mod
- DarkRadiant is a 3D level editor for Doom 3 and The Dark Mod, based on the GPL
- release of GtkRadiant.
+Description: RadiantEditor is a fork base on DarkRadiant
+ this fork aims to make DarkRadiant non tied to The Dark Mod game/engine.
 
-Package: darkradiant-plugins-darkmod
+Package: radianteditor-plugin-git
 Architecture: any
-Depends: darkradiant, ${shlibs:Depends}, ${misc:Depends}
-Description: DarkMod-specific plugins for DarkRadiant
- These plugins are used for editing Dark Mod missions.
+Depends: radianteditor, ${shlibs:Depends}, ${misc:Depends}
+Description: Git integration plugin for RadiantEditor
+ This plugin allows RadiantEditor to integrate with Git version control.
 
-Package: darkradiant-plugin-git
+Package: radianteditor-i18n
 Architecture: any
-Depends: darkradiant, ${shlibs:Depends}, ${misc:Depends}
-Description: Git integration plugin for DarkRadiant
- This plugin allows DarkRadiant to integrate with Git version control.
-
-Package: darkradiant-i18n
-Architecture: any
-Depends: darkradiant, ${misc:Depends}
-Description: Internationalisation files for DarkRadiant.
- This package includes the translated strings for localising DarkRadiant into
+Depends: radianteditor, ${misc:Depends}
+Description: Internationalisation files for RadiantEditor.
+ This package includes the translated strings for localising RadiantEditor into
  different languages. The currently-available languages are:
  .
  de (German)

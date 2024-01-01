@@ -1,14 +1,14 @@
-# Set the command name so that DarkRadiant recognises this file
+# Set the command name so that RadiantEditor recognises this file
 __commandName__ = 'SelectAllModelsOfType'
 __commandDisplayName__ = 'Select all Models of same type'
 
-# The actual algorithm called by DarkRadiant is contained in the execute()
+# The actual algorithm called by RadiantEditor is contained in the execute()
 # function
 def execute():
 	# Collect all currently selected models
 	selectedModelNames = {}
 
-	import darkradiant as dr
+	import radiant as dr
 
 	class Walker(dr.SelectionVisitor) :
 		def visit(self, node):
@@ -45,7 +45,7 @@ def execute():
 	walker = SceneWalker()
 	GlobalSceneGraph.root().traverse(walker)
 
-# __executeCommand__ evaluates to true after DarkRadiant has successfully
+# __executeCommand__ evaluates to true after RadiantEditor has successfully
 # initialised
 if __executeCommand__:
 	execute()

@@ -32,7 +32,7 @@ def execute():
     results = VisportalResults()
     visportalShader = 'textures/editor/visportal'
     
-    import darkradiant as dr
+    import radiant as dr
 
     class VisportalChecker(dr.SceneNodeVisitor):
         def pre(self, node):

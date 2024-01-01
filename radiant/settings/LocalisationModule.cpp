@@ -49,7 +49,7 @@ void LocalisationModule::initialiseModule(const IApplicationContext& ctx)
 	IPreferencePage& page = GlobalPreferenceSystem().getPage(_("Settings/Language"));
 	page.appendCombo(_("Language"), registryKey, langs);
 
-	page.appendLabel(_("<b>Note:</b> You'll need to restart DarkRadiant\nafter changing the language setting."));
+	page.appendLabel(_("<b>Note:</b> You'll need to restart RadiantEditor\nafter changing the language setting."));
 }
 
 void LocalisationModule::shutdownModule()

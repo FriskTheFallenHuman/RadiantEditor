@@ -1,0 +1,9 @@
+usr/bin
+usr/lib/*/radianteditor/lib*
+usr/lib/*/radianteditor/modules
+usr/share/radianteditor/scripts
+usr/share/radianteditor
+usr/share/doc/radianteditor
+usr/share/applications
+usr/share/icons
+usr/share/metainfo

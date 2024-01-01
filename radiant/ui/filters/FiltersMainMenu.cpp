@@ -9,7 +9,7 @@ namespace ui
 
 	namespace 
 	{
-		// greebo: These are used for the DarkRadiant main menu
+		// greebo: These are used for the RadiantEditor main menu
 		const std::string MENU_NAME = "main";
 		const std::string MENU_INSERT_BEFORE = MENU_NAME + "/map";
 		const std::string MENU_FILTERS_NAME = "filters";

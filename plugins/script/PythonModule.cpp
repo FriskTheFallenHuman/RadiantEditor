@@ -14,7 +14,7 @@ namespace script
 
 namespace
 {
-    constexpr const char* ModuleName = "darkradiant";
+    constexpr const char* ModuleName = "radiant";
 }
 
 PythonModule::PythonModule() :
@@ -44,7 +44,7 @@ void PythonModule::initialise()
 
     try
     {
-        // Import the darkradiant module
+        // Import the radianteditor ("radiant") module
         // This is triggering the call to InitModule as passed to the inittab
         // so we need to set the static _instance pointer right before and clear it afterwards
         _instance = this;
@@ -75,10 +75,10 @@ void PythonModule::initialise()
 
 void PythonModule::registerModule()
 {
-    rMessage() << "Registering darkradiant module to Python using pybind11 version " <<
+    rMessage() << "Registering radiant module to Python using pybind11 version " <<
         PYBIND11_VERSION_STR << std::endl;
 
-    // Register the darkradiant module to Python, the InitModule function
+    // Register the radianteditor ("radiant") module to Python, the InitModule function
     // will be called as soon as the module is imported
     int result = PyImport_AppendInittab(ModuleName, InitModule);
 
@@ -154,7 +154,7 @@ PyObject* PythonModule::initialiseModule()
 	try
 	{
         static py::module::module_def _moduleDef;
-        _module = py::module::create_extension_module(ModuleName, "DarkRadiant Main Module", &_moduleDef);
+        _module = py::module::create_extension_module(ModuleName, "RadiantEditor Main Module", &_moduleDef);
 
         // Add the registered interfaces
         for (const auto& i : _namedInterfaces)

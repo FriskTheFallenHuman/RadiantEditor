@@ -25,7 +25,7 @@ class ThreadedDeclarationTreePopulator :
 {
 private:
     static constexpr const char* const DEFAULT_DECL_ICON = "decl.png";
-    static constexpr const char* const DEFAULT_FOLDER_ICON = "folder16.png";
+    static constexpr const char* const DEFAULT_FOLDER_ICON = "icon_folder.png";
 
     decl::Type _type;
     const DeclarationTreeView::Columns& _columns;

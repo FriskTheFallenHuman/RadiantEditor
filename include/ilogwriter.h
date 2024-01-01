@@ -24,7 +24,7 @@ constexpr LogLevel AllLogLevels[] = {
 /**
  * greebo: A LogDevice is a class which is able to take log output.
  *
- * Examples of LogDevices are the Console and the DarkRadiant logfile.
+ * Examples of LogDevices are the Console and the RadiantEditor logfile.
  * Note: Use the LogWriter::attach() method to register a class for logging.
  */
 class ILogDevice

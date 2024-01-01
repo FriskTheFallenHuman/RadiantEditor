@@ -27,8 +27,8 @@ namespace
     const char* TEXTURE_PREFIX = "textures/";
 
     // Default image maps for optional material stages
-    const std::string IMAGE_FLAT = "_flat.bmp";
-    const std::string IMAGE_BLACK = "_black.bmp";
+    const std::string IMAGE_FLAT = "_flat.png";
+    const std::string IMAGE_BLACK = "_black.png";
 
     inline std::string getBitmapsPath()
     {

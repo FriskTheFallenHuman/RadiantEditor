@@ -60,7 +60,7 @@ public:
 	MapExporter(IMapWriter& writer, const scene::IMapRootNodePtr& root,
 				std::ostream& mapStream, std::size_t nodeCount = 0);
 
-	// Additional constructor allowed to write to the auxiliary .darkradiant file
+	// Additional constructor allowed to write to the auxiliary .project file
 	MapExporter(IMapWriter& writer, const scene::IMapRootNodePtr& root,
 				std::ostream& mapStream, std::ostream& auxStream, std::size_t nodeCount = 0);
 

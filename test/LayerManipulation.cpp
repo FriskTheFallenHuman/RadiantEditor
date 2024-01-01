@@ -659,8 +659,8 @@ TEST_F(LayerTest, LayerHierarchyIsPersistedToMap)
 {
     fs::path tempPath = _context.getTemporaryDataPath();
     tempPath /= "layer_hierarchy_test.map";
-    // Remove the .darkradiant file after this test
-    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "darkradiant"));
+    // Remove the .project file after this test
+    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "project"));
 
     runLayerHierarchyPersistenceTest(tempPath.string());
 }
@@ -691,7 +691,7 @@ TEST_F(LayerTest, LayerHierarchyIsRestoredFromMapx)
 
 TEST_F(LayerTest, LayerHierarchyIsRestoredFromMap)
 {
-    // The .darkradiant file contains a hierarchy that should be restored
+    // The .project file contains a hierarchy that should be restored
     // without running into crashes (layer 3 is a child of layer 9)
     auto mapFilePath = _context.getTestProjectPath() + "maps/layer_hierarchy_restore.map";
 
@@ -1052,8 +1052,8 @@ TEST_F(LayerTest, LayerVisibilityIsPersistedToMap)
     fs::path tempPath = _context.getTemporaryDataPath();
     tempPath /= "layer_visibility_test.map";
 
-    // Remove the .darkradiant file after this test
-    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "darkradiant"));
+    // Remove the .project file after this test
+    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "project"));
 
     runLayerVisibilityPersistenceTest(tempPath.string());
 }
@@ -1096,8 +1096,8 @@ TEST_F(LayerTest, LayerActiveStatusIsPersistedToMap)
     fs::path tempPath = _context.getTemporaryDataPath();
     tempPath /= "layer_active_status_test.map";
 
-    // Remove the .darkradiant file after this test
-    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "darkradiant"));
+    // Remove the .project file after this test
+    TemporaryFile tempDarkRadiantFile(os::replaceExtension(tempPath.string(), "project"));
 
     runLayerActiveStatusPersistenceTest(tempPath.string());
 }
@@ -1148,8 +1148,8 @@ TEST_F(LayerTest, ParseEmptyLayerPropertiesBlock)
     fs::path mapFilePath = _context.getTestProjectPath();
     mapFilePath /= "maps/layer_hierarchy_restore.map";
 
-    // Restore the .darkradiant file after this test
-    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "darkradiant");
+    // Restore the .project file after this test
+    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "project");
     BackupCopy copy(infoFilePath);
 
     replacePropertiesBlock(infoFilePath, R"(    LayerProperties
@@ -1165,8 +1165,8 @@ TEST_F(LayerTest, ParseLayerPropertiesActiveLayer)
     fs::path mapFilePath = _context.getTestProjectPath();
     mapFilePath /= "maps/layer_hierarchy_restore.map";
 
-    // Restore the .darkradiant file after this test
-    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "darkradiant");
+    // Restore the .project file after this test
+    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "project");
     BackupCopy backupCopy(infoFilePath);
 
     // Throw in a few potentially problematic cases.
@@ -1212,8 +1212,8 @@ TEST_F(LayerTest, ParseLayerPropertiesHiddenLayers)
     fs::path mapFilePath = _context.getTestProjectPath();
     mapFilePath /= "maps/layer_hierarchy_restore.map";
 
-    // Restore the .darkradiant file after this test
-    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "darkradiant");
+    // Restore the .project file after this test
+    auto infoFilePath = os::replaceExtension(mapFilePath.string(), "project");
     BackupCopy backupCopy(infoFilePath);
 
     // No hidden layers

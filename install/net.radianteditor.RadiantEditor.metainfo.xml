@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>net.darkradiant.DarkRadiant</id>
+  <id>net.radianteditor.RadiantEditor</id>
   <name>RadiantEditor</name>
   <summary>3D level editor for IdTech4 games</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -31,7 +31,7 @@
     </p>
   </description>
   
-  <launchable type="desktop-id">net.darkradiant.DarkRadiant.desktop</launchable>
+  <launchable type="desktop-id">net.radianteditor.RadiantEditor.desktop</launchable>
 
   <releases>
     <release version="3.7.0" date="2022-11-22"/>

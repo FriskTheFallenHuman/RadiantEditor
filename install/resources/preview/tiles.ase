@@ -1,5 +1,5 @@
 *3DSMAX_ASCIIEXPORT	200
-*COMMENT "DarkRadiant ASCII Scene Export(*.ase)"
+*COMMENT "RadiantEditor ASCII Scene Export(*.ase)"
 *SCENE {
 	*SCENE_FILENAME "unnamed.map"
 	*SCENE_FIRSTFRAME 0

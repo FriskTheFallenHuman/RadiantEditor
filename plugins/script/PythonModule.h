@@ -43,7 +43,7 @@ public:
     PythonModule();
     ~PythonModule();
 
-    // Starts up the interpreter, imports the darkradiant module
+    // Starts up the interpreter, imports the radianteditor ("radiant") module
     void initialise();
 
     ExecutionResultPtr executeString(const std::string& scriptString);
@@ -54,7 +54,7 @@ public:
     void addInterface(const NamedInterface& iface);
 
 private:
-    // Register the darkradiant module with the inittab pointing to InitModule
+    // Register the radianteditor ("radiant") module with the inittab pointing to InitModule
     void registerModule();
 
     bool interfaceExists(const std::string& name);

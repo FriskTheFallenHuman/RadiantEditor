@@ -71,7 +71,7 @@ protected:
     // May return an empty reference, may throw OperationException on failure
     virtual stream::MapResourceStream::Ptr openMapfileStream();
 
-    // Implementation-specific method to open the info file stream (.darkradiant) file
+    // Implementation-specific method to open the info file stream (.project) file
     // May return an empty reference, may throw OperationException on failure
     virtual stream::MapResourceStream::Ptr openInfofileStream();
 

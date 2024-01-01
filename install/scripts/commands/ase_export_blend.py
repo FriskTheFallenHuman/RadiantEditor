@@ -18,17 +18,17 @@
 
 #TODO:
 
-# Set the command name so that DarkRadiant recognises this file
+# Set the command name so that RadiantEditor recognises this file
 __commandName__ = 'aseExportBlend'
 __commandDisplayName__ = 'Export blended ASE...'
 
-# The actual algorithm called by DarkRadiant is contained in the execute() function
+# The actual algorithm called by RadiantEditor is contained in the execute() function
 def execute():
-    script = "Dark Radiant ASCII Scene Export (*.ase)"
+    script = "RadiantEditor ASCII Scene Export (*.ase)"
     author = "Richard Bartlett, some additions by greebo and tels"
     version = "0.71"
 
-    import darkradiant as dr
+    import radiant as dr
 
     # Check if we have a valid selection
     #import time
@@ -482,7 +482,7 @@ def execute():
                 file.write(data)
                 file.close()
 
-# __executeCommand__ evaluates to true after DarkRadiant has successfully initialised
+# __executeCommand__ evaluates to true after RadiantEditor has successfully initialised
 if __executeCommand__:
     execute()
 

@@ -24,7 +24,7 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 desktop-file-install					\
   --dir=${RPM_BUILD_ROOT}%{_datadir}/applications	\
-  ${RPM_BUILD_ROOT}%{_datadir}/applications/darkradiant.desktop
+  ${RPM_BUILD_ROOT}%{_datadir}/applications/radianteditor.desktop
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -33,24 +33,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc README
 %{_bindir}/*
-%{_libdir}/darkradiant/lib*
-%{_libdir}/darkradiant/modules
-%{_libdir}/darkradiant/scripts
-%{_libdir}/darkradiant/plugins/eclasstree*
+%{_libdir}/radianteditor/lib*
+%{_libdir}/radianteditor/modules
+%{_libdir}/radianteditor/scripts
+%{_libdir}/radianteditor/plugins/eclasstree*
 %{_datadir}/*
-
-%package plugins-darkmod
-Summary:	DarkMod-specific plugins for DarkRadiant
-Group:		Applications/Editors
-Requires:	darkradiant
-
-%description plugins-darkmod
- These plugins are used for editing Dark Mod missions.
-
-%files plugins-darkmod
-%defattr(-,root,root,-)
-%doc README.linux
-%{_libdir}/darkradiant/plugins/dm_*
 
 %changelog
 * Tue Mar 26 2009 ibix <ibixian@gmail.com> - 0.9.12-2

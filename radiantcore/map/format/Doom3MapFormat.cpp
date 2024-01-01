@@ -67,7 +67,7 @@ IMapWriterPtr Doom3MapFormat::getMapWriter() const
 
 bool Doom3MapFormat::allowInfoFileCreation() const
 {
-	// allow .darkradiant files to be saved
+	// allow .project files to be saved
 	return true;
 }
 

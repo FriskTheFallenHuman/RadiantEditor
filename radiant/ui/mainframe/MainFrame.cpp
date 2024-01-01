@@ -97,7 +97,7 @@ void MainFrame::initialiseModule(const IApplicationContext& ctx)
 		);
 	}
 
-	page.appendCombo(_("Start DarkRadiant on monitor"), RKEY_MULTIMON_START_MONITOR, list);
+	page.appendCombo(_("Start RadiantEditor on monitor"), RKEY_MULTIMON_START_MONITOR, list);
 
     GlobalCommandSystem().addCommand(FOCUS_CONTROL_COMMAND,
         std::bind(&MainFrame::focusControl, this, std::placeholders::_1),

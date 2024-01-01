@@ -23,7 +23,7 @@ public:
 
     std::string getIcon() override
     {
-        return "folder16.png";
+        return "icon_folder.png";
     }
 
     wxWindow* createWidget(wxWindow* parent) override

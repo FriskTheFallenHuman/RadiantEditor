@@ -16,17 +16,17 @@
 #
 # ***** END GPL LICENCE BLOCK *****
 
-# Set the command name so that DarkRadiant recognises this file
+# Set the command name so that RadiantEditor recognises this file
 __commandName__ = 'objExport'
 __commandDisplayName__ = 'Export OBJ...'
 
-# The actual algorithm called by DarkRadiant is contained in the execute() function
+# The actual algorithm called by RadiantEditor is contained in the execute() function
 def execute():
-    script = "DarkRadiant Wavefront OBJ Export (*.obj)"
-    author = "Python port by greebo, based on original exporter C++ code in DarkRadiant and the ASE exporter scripts"
+    script = "RadiantEditor Wavefront OBJ Export (*.obj)"
+    author = "Python port by greebo, based on original exporter C++ code in GtkRadiant and the ASE exporter scripts"
     version = "0.2"
 
-    import darkradiant as dr
+    import radiant as dr
 
     # Check if we have a valid selection
 
@@ -265,7 +265,7 @@ def execute():
             
             print('Done writing OBJ data to {0}'.format(fullpath))
 
-# __executeCommand__ evaluates to true after DarkRadiant has successfully initialised
+# __executeCommand__ evaluates to true after RadiantEditor has successfully initialised
 if __executeCommand__:
     execute()
 

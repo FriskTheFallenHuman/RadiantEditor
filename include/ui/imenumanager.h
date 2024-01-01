@@ -23,7 +23,7 @@ enum class ItemType
 	Separator,
 };
 
-// Interface of the menu items used by DarkRadiant's MenuManager
+// Interface of the menu items used by RadiantEditor's MenuManager
 class IMenuElement
 {
 public:

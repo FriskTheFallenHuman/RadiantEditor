@@ -22,20 +22,20 @@
 namespace
 {
 	// Default image maps for optional material stages
-	const std::string IMAGE_BLACK = "_black.bmp";
-	const std::string IMAGE_CUBICLIGHT = "_cubiclight.bmp";
-	const std::string IMAGE_CURRENTRENDER = "_currentrender.bmp";
-	const std::string IMAGE_DEFAULT = "_default.bmp";
-	const std::string IMAGE_FLAT = "_flat.bmp";
-	const std::string IMAGE_FOG = "_fog.bmp";
-	const std::string IMAGE_NOFALLOFF = "noFalloff.bmp";
-	const std::string IMAGE_POINTLIGHT1 = "_pointlight1.bmp";
-	const std::string IMAGE_POINTLIGHT2 = "_pointlight2.bmp";
-	const std::string IMAGE_POINTLIGHT3 = "_pointlight3.bmp";
-	const std::string IMAGE_QUADRATIC = "_quadratic.bmp";
-	const std::string IMAGE_SCRATCH = "_scratch.bmp";
-	const std::string IMAGE_SPOTLIGHT = "_spotlight.bmp";
-	const std::string IMAGE_WHITE = "_white.bmp";
+	const std::string IMAGE_BLACK = "_black.png";
+	const std::string IMAGE_CUBICLIGHT = "_cubiclight.png";
+	const std::string IMAGE_CURRENTRENDER = "_currentrender.png";
+	const std::string IMAGE_DEFAULT = "_default.png";
+	const std::string IMAGE_FLAT = "_flat.png";
+	const std::string IMAGE_FOG = "_fog.png";
+	const std::string IMAGE_NOFALLOFF = "noFalloff.png";
+	const std::string IMAGE_POINTLIGHT1 = "_pointlight1.png";
+	const std::string IMAGE_POINTLIGHT2 = "_pointlight2.png";
+	const std::string IMAGE_POINTLIGHT3 = "_pointlight3.png";
+	const std::string IMAGE_QUADRATIC = "_quadratic.png";
+	const std::string IMAGE_SCRATCH = "_scratch.png";
+	const std::string IMAGE_SPOTLIGHT = "_spotlight.png";
+	const std::string IMAGE_WHITE = "_white.png";
 
 	inline std::string getBitmapsPath()
 	{

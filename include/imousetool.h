@@ -14,7 +14,7 @@ namespace ui
 
 /** 
  * A Tool class represents an operator which can be "used" 
- * in DarkRadiant's Ortho- and Camera views by using the mouse.
+ * in RadiantEditor's Ortho- and Camera views by using the mouse.
  */
 class MouseTool
 {

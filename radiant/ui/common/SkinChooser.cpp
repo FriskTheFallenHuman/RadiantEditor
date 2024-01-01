@@ -18,7 +18,7 @@ namespace ui
 
 namespace
 {
-	constexpr const char* SKIN_ICON = "skin16.png";
+	constexpr const char* SKIN_ICON = "icon_skin.png";
 	constexpr const char* const WINDOW_TITLE = N_("Choose Skin");
 
     /**

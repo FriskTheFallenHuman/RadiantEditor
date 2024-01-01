@@ -69,11 +69,11 @@ ScriptWindow::ScriptWindow(wxWindow* parent) :
 	_paned->SetSashPosition(150);
 
     // Add the initial import statement
-    _view->SetValue(fmt::format(R"(import darkradiant as dr
+    _view->SetValue(fmt::format(R"(import radiant as dr
 
 # Enter your script code here. For reference, see
 # {0}
-# or the scripts/test.py in DarkRadiant installation folder.
+# or the scripts/test.py in RadiantEditor installation folder.
 )", scriptReferenceUrl));
 }
 

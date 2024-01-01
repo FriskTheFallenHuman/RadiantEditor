@@ -11,7 +11,7 @@ class ModuleLoader;
 
 /** 
  * greebo: Implementation of the IModuleRegistry interface defined in imodule.h.
- * It stores and manages the lifecycle of all modules in DarkRadiant.
+ * It stores and manages the lifecycle of all modules in RadiantEditor.
  * 
  * Use the registerModule() method to add new modules, which will be initialised
  * during the startup phase, resolving the module dependencies on the go.

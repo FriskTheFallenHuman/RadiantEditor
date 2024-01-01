@@ -242,6 +242,6 @@
 		<mapPositionPosKey value="editor_drMapPos" />
 		<mapPositionAngleKey value="editor_drMapAngle" />
 		<playerStartPoint value="info_player_start" />
-		<infoFileExtension value=".darkradiant" />
+		<infoFileExtension value=".project" />
 	</mapFormat>
 </game>

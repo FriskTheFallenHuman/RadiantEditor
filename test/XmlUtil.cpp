@@ -352,16 +352,16 @@ TEST_F(XmlTest, GetNodeContent)
 {
     xml::Document document(_context.getTestResourcePath() + TEST_XML_FILE);
 
-    auto colourNode = document.findXPath("//colourscheme[@name='DarkRadiant Default']/colour[@name='xyview_crosshairs']").at(0);
+    auto colourNode = document.findXPath("//colourscheme[@name='RadiantEditor Default']/colour[@name='xyview_crosshairs']").at(0);
     EXPECT_EQ(colourNode.getContent(), "") << "Closed XML tag should have an empty content";
 
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']").size(), 1);
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']/specialNode").size(), 1) << "Expected 1 matching node";
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']").size(), 1);
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']/specialNode").size(), 1) << "Expected 1 matching node";
 
-    auto specialNode = document.findXPath("//colourscheme[@name='DarkRadiant Default']/specialNode").at(0);
+    auto specialNode = document.findXPath("//colourscheme[@name='RadiantEditor Default']/specialNode").at(0);
     EXPECT_EQ(specialNode.getContent(), "Some special content");
 
-    auto specialNodeWithWhitespace = document.findXPath("//colourscheme[@name='DarkRadiant Default']/specialNodeWithWhitespace").at(0);
+    auto specialNodeWithWhitespace = document.findXPath("//colourscheme[@name='RadiantEditor Default']/specialNodeWithWhitespace").at(0);
     EXPECT_EQ(specialNodeWithWhitespace.getContent(), R"(
         Some special content including leading and trailing whitespace
     )");
@@ -371,10 +371,10 @@ TEST_F(XmlTest, SetNodeContent)
 {
     xml::Document document(_context.getTestResourcePath() + TEST_XML_FILE);
 
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']").size(), 1);
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']/specialNode").size(), 1) << "Expected 1 matching node";
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']").size(), 1);
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']/specialNode").size(), 1) << "Expected 1 matching node";
 
-    auto specialNode = document.findXPath("//colourscheme[@name='DarkRadiant Default']/specialNode").at(0);
+    auto specialNode = document.findXPath("//colourscheme[@name='RadiantEditor Default']/specialNode").at(0);
 
     std::string someText = "-Some text-";
     specialNode.setContent(someText);
@@ -392,7 +392,7 @@ TEST_F(XmlTest, AddTextToNode)
 {
     xml::Document document(_context.getTestResourcePath() + TEST_XML_FILE);
 
-    auto colourscheme = document.findXPath("//colourscheme[@name='DarkRadiant Default']").at(0);
+    auto colourscheme = document.findXPath("//colourscheme[@name='RadiantEditor Default']").at(0);
     auto testNode1 = colourscheme.createChild("testNode");
     auto testNode2 = colourscheme.createChild("testNode");
 
@@ -416,13 +416,13 @@ TEST_F(XmlTest, EraseNode)
 
     // Expect exactly two colour schemes, one with that name
     EXPECT_EQ(document.findXPath("//colourscheme").size(), 2);
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']").size(), 1);
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']").size(), 1);
 
-    auto colourscheme = document.findXPath("//colourscheme[@name='DarkRadiant Default']").at(0);
+    auto colourscheme = document.findXPath("//colourscheme[@name='RadiantEditor Default']").at(0);
     colourscheme.erase();
 
     EXPECT_EQ(document.findXPath("//colourscheme").size(), 1);
-    EXPECT_EQ(document.findXPath("//colourscheme[@name='DarkRadiant Default']").size(), 0);
+    EXPECT_EQ(document.findXPath("//colourscheme[@name='RadiantEditor Default']").size(), 0);
 }
 
 }

@@ -7,7 +7,7 @@
 #define RADIANT_VERSION "3.8.0"
 #endif
 
-#define RADIANT_APPNAME "DarkRadiant"
+#define RADIANT_APPNAME "RadiantEditor"
 #define RADIANT_BLANK " "
 
 #if defined(_M_X64) || defined(__amd64__) || defined(_WIN64)

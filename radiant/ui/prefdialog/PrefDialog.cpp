@@ -19,7 +19,7 @@ namespace ui
 {
 
 PrefDialog::PrefDialog(wxWindow* parent) :
-	DialogBase(_("DarkRadiant Preferences"), parent),
+	DialogBase(_("RadiantEditor Preferences"), parent),
 	_notebook(nullptr)
 {
 	SetSizer(new wxBoxSizer(wxVERTICAL));
@@ -130,7 +130,7 @@ void PrefDialog::showModal(const std::string& requestedPage)
 		}
 
 		// greebo: Check if the mainframe module is already "existing". It might be
-		// uninitialised if this dialog is shown during DarkRadiant startup
+		// uninitialised if this dialog is shown during RadiantEditor startup
 		if (module::GlobalModuleRegistry().moduleExists(MODULE_MAINFRAME))
 		{
 			GlobalMainFrame().updateAllWindows();
@@ -166,7 +166,7 @@ void PrefDialog::showPage(const std::string& path)
 void PrefDialog::ShowDialog(const std::string& path)
 {
 	// greebo: Check if the mainframe module is already "existing". It might be
-	// uninitialised if this dialog is shown during DarkRadiant startup
+	// uninitialised if this dialog is shown during RadiantEditor startup
 	wxWindow* parent = module::GlobalModuleRegistry().moduleExists(MODULE_MAINFRAME) ?
 		GlobalMainFrame().getWxTopLevelWindow() : nullptr;
 

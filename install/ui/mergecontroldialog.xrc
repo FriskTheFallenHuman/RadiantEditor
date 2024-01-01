@@ -98,7 +98,7 @@
 											<flag>wxALIGN_CENTER_VERTICAL|wxLEFT|wxRIGHT</flag>
 											<border>3</border>
 											<object class="wxStaticBitmap" name="m_bitmap2">
-												<bitmap stock_id="darkradiant:merge_arrow.png" stock_client="">undefined.png</bitmap>
+												<bitmap stock_id="radianteditor:merge_arrow.png" stock_client="">undefined.png</bitmap>
 											</object>
 										</object>
 										<object class="sizeritem">
@@ -125,7 +125,7 @@
 												<flag>wxALIGN_CENTER|wxALL</flag>
 												<border>0</border>
 												<object class="wxStaticBitmap" name="m_bitmap1">
-													<bitmap stock_id="darkradiant:merge_fork.png" stock_client="">undefined.png</bitmap>
+													<bitmap stock_id="radianteditor:merge_fork.png" stock_client="">undefined.png</bitmap>
 												</object>
 											</object>
 											<object class="sizeritem">
@@ -561,7 +561,7 @@
 												<flag>wxBOTTOM|wxTOP</flag>
 												<border>6</border>
 												<object class="wxCheckBox" name="KeepSelectionGroupsIntact">
-													<tooltip>With this option checked, DarkRadiant will attempt to keep all links between selection groups intact. There&apos;s no guarantee that this will work 100%, since it&apos;s usually problematic when both maps have seen changes to the same elements and their grouping.</tooltip>
+													<tooltip>With this option checked, RadiantEditor will attempt to keep all links between selection groups intact. There&apos;s no guarantee that this will work 100%, since it&apos;s usually problematic when both maps have seen changes to the same elements and their grouping.</tooltip>
 													<label>Merge Selection Group Information</label>
 													<checked>0</checked>
 												</object>

@@ -200,7 +200,7 @@ void Lwo2Exporter::exportToStream(std::ostream& stream)
 
 		// LWO2 sez: "When writing POLS, the vertex list for each polygon should begin 
 		// at a convex vertex and proceed clockwise as seen from the visible side of the polygon"
-		// DarkRadiant uses CCW windings, so reverse the index ordering
+		// RadiantEditor uses CCW windings, so reverse the index ordering
 
 		for (std::size_t i = 0; i + 2 < surface.indices.size(); i += 3)
 		{

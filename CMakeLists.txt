@@ -22,12 +22,12 @@ include(GNUInstallDirs)
 
 # Set up core build paths
 set(CORE_MODULE_LIBRARY "libradiantcore")
-set(PKGDATADIR "${CMAKE_INSTALL_FULL_DATADIR}/darkradiant")
-set(PKGLIBDIR "${CMAKE_INSTALL_FULL_LIBDIR}/darkradiant")
+set(PKGDATADIR "${CMAKE_INSTALL_FULL_DATADIR}/radianteditor")
+set(PKGLIBDIR "${CMAKE_INSTALL_FULL_LIBDIR}/radianteditor")
 if (${ENABLE_RELOCATION})
-    set(RELATIVE_LIBDIR "../${CMAKE_INSTALL_LIBDIR}/darkradiant")
+    set(RELATIVE_LIBDIR "../${CMAKE_INSTALL_LIBDIR}/radianteditor")
 else()
-    set(HTMLDIR "${CMAKE_INSTALL_FULL_DATADIR}/doc/darkradiant")
+    set(HTMLDIR "${CMAKE_INSTALL_FULL_DATADIR}/doc/radianteditor")
 endif()
 
 # Build shared libraries by default
@@ -152,12 +152,12 @@ install(DIRECTORY install/ui DESTINATION ${PKGDATADIR}
         FILES_MATCHING PATTERN "*.ttf" PATTERN "*.xrc")
 install(DIRECTORY install/resources DESTINATION ${PKGDATADIR})
 
-install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/darkradiant_icon_64x64.png
+install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/radianteditor_icon_64x64.png
         DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/64x64/apps
-        RENAME net.darkradiant.DarkRadiant.png)
-install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/darkradiant_icon_128x128.png
+        RENAME net.radianteditor.RadiantEditor.png)
+install(FILES ${PROJECT_SOURCE_DIR}/install/bitmaps/radianteditor_icon_128x128.png
         DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/128x128/apps
-        RENAME net.darkradiant.DarkRadiant.png)
+        RENAME net.radianteditor.RadiantEditor.png)
 install(FILES ${PROJECT_SOURCE_DIR}/install/net.radianteditor.RadiantEditor.metainfo
         DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
 

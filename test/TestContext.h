@@ -9,7 +9,7 @@ namespace radiant
 {
 
 /**
- * Application context implementation used in DarkRadiant's unit tests
+ * Application context implementation used in RadiantEditor's unit tests
  */
 class TestContext :
 	public radiant::ApplicationContextBase

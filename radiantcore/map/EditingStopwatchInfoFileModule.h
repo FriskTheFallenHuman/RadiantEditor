@@ -7,7 +7,7 @@ namespace map
 
 /**
 * Info File Module to persist the total map editing time to the
-* .darkradiant map info file.
+* .project map info file.
 */
 class EditingStopwatchInfoFileModule :
 	public IMapInfoFileModule

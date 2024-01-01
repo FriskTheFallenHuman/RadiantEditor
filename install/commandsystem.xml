@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <commandsystem>
-	<!-- These are the default statements used by vanilla DarkRadiant, don't remove these -->
+	<!-- These are the default statements used by vanilla RadiantEditor, don't remove these -->
 	<binds>
 		<!-- Brush cuboid commands -->
 		<bind name="Brush3Sided" value="BrushMakeSided 3" readonly="1" />

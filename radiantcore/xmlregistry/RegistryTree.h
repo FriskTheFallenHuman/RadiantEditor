@@ -5,12 +5,12 @@
 namespace registry
 {
 
-const char* const TOPLEVEL_NODE_NAME = "darkradiant";
+const char* const TOPLEVEL_NODE_NAME = "radianteditor";
 
 class RegistryTree
 {
 private:
-	// The top level node name ("darkradiant")
+	// The top level node name ("radianteditor")
 	std::string _topLevelNode;
 	std::string _defaultImportNode;
 
@@ -42,7 +42,7 @@ public:
 	xml::Node createKeyWithName(const std::string& path, const std::string& key, const std::string& name);
 
 	/**
-	 * greebo: Gets a key from the registry, /darkradiant is automatically added by prepareKey()
+	 * greebo: Gets a key from the registry, /radianteditor is automatically added by prepareKey()
 	 * if relative paths are used.
 	 *
 	 * The returned value is properly converted from UTF-8 to the current locale using gtkutil::IConv.
@@ -50,7 +50,7 @@ public:
 	std::string get(const std::string& key);
 
 	// Sets the value of a key from the registry,
-	// "/darkradiant" is automatically added if relative paths are used
+	// "/radianteditor" is automatically added if relative paths are used
 	// Note that the given key is NOT processed in terms of UTF-8 <-> locale conversion.
 	void set(const std::string& key, const std::string& value);
 
@@ -59,7 +59,7 @@ public:
 		const std::string& attrName, const std::string& attrValue);
 
 	/* Appends a whole (external) XML file to the XMLRegistry. The toplevel nodes of this file
-	 * are appended to _topLevelNode (e.g. <darkradiant>) if parentKey is set to the empty string "",
+	 * are appended to _topLevelNode (e.g. <radianteditor>) if parentKey is set to the empty string "",
 	 * otherwise they are imported as a child of the specified parentKey
 	 */
 	void importFromFile(const std::string& importFilePath, const std::string& parentKey);
@@ -73,7 +73,7 @@ public:
 private:
 	/* Checks whether the key is an absolute or a relative path
 	 * Absolute paths are returned unchanged, a prefix with the
-	 * toplevel node (e.g. "/darkradiant") is appended to the relative ones.
+	 * toplevel node (e.g. "/radianteditor") is appended to the relative ones.
 	 */
 	std::string prepareKey(const std::string& key);
 };

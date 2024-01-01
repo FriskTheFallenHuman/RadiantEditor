@@ -8,7 +8,7 @@ jobs:
 
     env:
       # Path to the solution file relative to the root of the project.
-      SOLUTION_FILE_PATH: .\DarkRadiant.sln
+      SOLUTION_FILE_PATH: .\RadiantEditor.sln
       TESTS_FILE_PATH: .\install\Tests.exe
       BUILD_CONFIGURATION: Release
       GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,17 +72,17 @@ jobs:
     - name: Upload Portable Package
       uses: actions/upload-artifact@v3
       with:
-        name: darkradiant-portable-package-x64
+        name: radianteditor-portable-package-x64
         path: |
-          tools/scripts/DarkRadiant_install.x64/**/*
-          !tools/scripts/DarkRadiant_install.x64/**/*.pdb
+          tools/scripts/RadiantEditor_install.x64/**/*
+          !tools/scripts/RadiantEditor_install.x64/**/*.pdb
 
     - name: Upload Portable Package PDBs
       uses: actions/upload-artifact@v3
       with:
-        name: darkradiant-pdb-files-x64
+        name: radianteditor-pdb-files-x64
         path: |
-          tools/scripts/DarkRadiant_install.x64/**/*.pdb
+          tools/scripts/RadiantEditor_install.x64/**/*.pdb
 
     - name: Upload Test Results
       uses: actions/upload-artifact@v3

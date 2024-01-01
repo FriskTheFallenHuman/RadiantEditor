@@ -5,8 +5,8 @@ CMakeCache.txt
 cmake_install.cmake
 /config.h
 /install_manifest.txt
-/radiant/darkradiant
-/install/darkradiant.desktop
+/radiant/radianteditor
+/install/radianteditor.desktop
 /test/drtest
 *.o
 *.lo
@@ -38,8 +38,8 @@ tools/msvc/*.exe
 
 # Windows Visual Studio stuff
 *.user
-DarkRadiant.opensdf
-DarkRadiant.sdf
+RadiantEditor.opensdf
+RadiantEditor.sdf
 gtkrc
 testsuite.ilk
 
@@ -70,14 +70,14 @@ Makefile.in
 /aclocal.m4
 /install/*.zip
 /tools/msvc/.vs
-/tools/msvc/DarkRadiant.VC.db
+/tools/msvc/RadiantEditor.VC.db
 /tools/innosetup/*.zip
 /tools/lwo_analyse/.vs
 /radiant/*.aps
 
 # Portable installation temp folders
-/tools/scripts/DarkRadiant_install.x64
-/tools/scripts/DarkRadiant_install
+/tools/scripts/RadiantEditor_install.x64
+/tools/scripts/RadiantEditor_install
 /install/*.ilk
 /tools/msvc/Tests/x64
 /tools/msvc/x64

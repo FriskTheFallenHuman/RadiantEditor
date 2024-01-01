@@ -1,5 +1,5 @@
 # Some interface tests
-import darkradiant as dr
+import radiant as dr
 
 # Test the Registry interface
 value = GlobalRegistry.get('user/paths/appPath')

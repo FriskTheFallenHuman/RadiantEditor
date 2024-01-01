@@ -15,7 +15,7 @@ namespace ui
 namespace
 {
     const char* const TEXTURE_ICON = "icon_texture.png";
-    const char* const FOLDER_ICON = "folder16.png";
+    const char* const FOLDER_ICON = "icon_folder.png";
 }
 
 class ImageFileFunctor :

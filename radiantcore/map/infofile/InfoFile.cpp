@@ -10,7 +10,7 @@
 namespace map
 {
 
-const char* const InfoFile::HEADER_SEQUENCE = "DarkRadiant Map Information File Version";
+const char* const InfoFile::HEADER_SEQUENCE = "RadiantEditor Map Information File Version";
 
 // Pass the input stream to the constructor
 InfoFile::InfoFile(std::istream& infoStream, const scene::IMapRootNodePtr& root, const NodeIndexMap& nodeMap) :
@@ -54,7 +54,7 @@ void InfoFile::parseInfoFileHeader()
 		std::vector<std::string> parts;
 		string::split(parts, HEADER_SEQUENCE, " ");
 
-		// Parse the string "DarkRadiant Map Information File Version"
+		// Parse the string "RadiantEditor Map Information File Version"
 		for (std::size_t i = 0; i < parts.size(); i++)
 		{
 			_tok.assertNextToken(parts[i]);

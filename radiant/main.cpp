@@ -1,5 +1,5 @@
 /**
- * DarkRadiant's application entry point, declares and sets up the wxApp instance
+ * RadiantEditor's application entry point, declares and sets up the wxApp instance
  */
 #include "RadiantApp.h"
 

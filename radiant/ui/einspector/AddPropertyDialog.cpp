@@ -26,7 +26,7 @@ namespace
 	// CONSTANTS
 	const char* const ADDPROPERTY_TITLE = N_("Add property");
 	const char* const PROPERTIES_XPATH = "/entityInspector//property";
-	const char* const FOLDER_ICON = "folder16.png";
+	const char* const FOLDER_ICON = "icon_folder.png";
 
 	const char* const CUSTOM_PROPERTY_TEXT = N_("Custom properties defined for this "
 												"entity class, if any");

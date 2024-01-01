@@ -8,7 +8,7 @@ namespace map
 /**
  * Public interface to to automatic map save algorithms.
  * 
- * DarkRadiant can be configured to create map backups on demand,
+ * RadiantEditor can be configured to create map backups on demand,
  * which can be a simple copy of the current map that is overwritten every time,
  * or it can create sequential snapshots in a separate folder including size limitations.
  * 

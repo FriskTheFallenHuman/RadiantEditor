@@ -125,7 +125,7 @@ class IEntityClass :
 public:
     virtual ~IEntityClass() {}
 
-    // Enumeration of types DarkRadiant is capable of distinguishing when creating entities
+    // Enumeration of types RadiantEditor is capable of distinguishing when creating entities
     enum class Type
     {
         Generic,            // fixed-size, coloured boxes with and without arrow

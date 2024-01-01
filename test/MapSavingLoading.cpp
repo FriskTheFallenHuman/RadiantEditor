@@ -86,7 +86,7 @@ protected:
         }
     }
 
-    // Creates a copy of the given map (including the .darkradiant file) in the temp data path
+    // Creates a copy of the given map (including the .project file) in the temp data path
     // The copy will be removed in the TearDown() method
     fs::path createMapCopyInTempDataPath(const std::string& mapToCopy, const std::string& newFilename)
     {
@@ -96,7 +96,7 @@ protected:
         return createMapCopy(mapToCopy, targetPath);
     }
 
-    // Creates a copy of the given map (including the .darkradiant file) in the mod-relative maps path
+    // Creates a copy of the given map (including the .project file) in the mod-relative maps path
     // The copy will be removed in the TearDown() method
     fs::path createMapCopyInModMapsPath(const std::string& mapToCopy, const std::string& newFilename)
     {
@@ -114,17 +114,17 @@ private:
         mapPath /= "maps/";
         mapPath /= mapToCopy;
 
-        fs::path targetInfoFilePath = fs::path(targetPath).replace_extension("darkradiant");
+        fs::path targetInfoFilePath = fs::path(targetPath).replace_extension("project");
 
         _pathsToCleanupAfterTest.push_back(targetPath);
         _pathsToCleanupAfterTest.push_back(targetInfoFilePath);
 
-        // Copy both .map and .darkradiant file
+        // Copy both .map and .project file
         fs::remove(targetPath);
         fs::remove(targetInfoFilePath);
 
         fs::copy(mapPath, targetPath);
-        fs::copy(fs::path(mapPath).replace_extension("darkradiant"), targetInfoFilePath);
+        fs::copy(fs::path(mapPath).replace_extension("project"), targetInfoFilePath);
 
         return targetPath;
     }
@@ -324,7 +324,7 @@ TEST_F(MapLoadingTest, openMapFromArchiveWithoutInfoFile)
     GlobalCommandSystem().executeCommand("OpenMapFromArchive", pakPath.string(), archiveRelativePath);
 
     // Check if the scene contains what we expect, just the geometry since the map
-    // is lacking its .darkradiant file
+    // is lacking its .project file
     checkAltarSceneGeometry();
 }
 
@@ -365,9 +365,9 @@ TEST_F(MapLoadingTest, openMapWithoutInfoFile)
 {
     auto tempPath = createMapCopyInTempDataPath("altar.map", "altar_openMapWithoutInfoFile.map");
 
-    fs::remove(fs::path(tempPath).replace_extension("darkradiant"));
+    fs::remove(fs::path(tempPath).replace_extension("project"));
 
-    EXPECT_FALSE(os::fileOrDirExists(fs::path(tempPath).replace_extension("darkradiant")));
+    EXPECT_FALSE(os::fileOrDirExists(fs::path(tempPath).replace_extension("project")));
 
     GlobalCommandSystem().executeCommand("OpenMap", tempPath.string());
 
@@ -510,11 +510,11 @@ TEST_F(MapSavingTest, saveMapDoesntChangeMap)
     copiedMap /= modRelativePath;
 
     fs::remove(copiedMap);
-    fs::remove(fs::path(copiedMap).replace_extension("darkradiant"));
+    fs::remove(fs::path(copiedMap).replace_extension("project"));
 
     fs::remove(copiedMap);
     fs::copy(mapPath, copiedMap);
-    fs::copy(fs::path(mapPath).replace_extension("darkradiant"), fs::path(copiedMap).replace_extension("darkradiant"));
+    fs::copy(fs::path(mapPath).replace_extension("project"), fs::path(copiedMap).replace_extension("project"));
 
     auto originalModificationDate = fs::last_write_time(copiedMap);
 
@@ -532,8 +532,8 @@ TEST_F(MapSavingTest, saveMapDoesntChangeMap)
 
     fs::remove(copiedMap);
     fs::remove(fs::path(copiedMap).replace_extension("bak"));
-    fs::remove(fs::path(copiedMap).replace_extension("darkradiant"));
-    fs::remove(fs::path(copiedMap).replace_extension("darkradiant").string() + ".bak");
+    fs::remove(fs::path(copiedMap).replace_extension("project"));
+    fs::remove(fs::path(copiedMap).replace_extension("project").string() + ".bak");
 }
 
 TEST_F(MapSavingTest, saveMapCreatesInfoFile)
@@ -544,7 +544,7 @@ TEST_F(MapSavingTest, saveMapCreatesInfoFile)
     // Respond to the file selection request when saving
     fs::path tempPath = _context.getTemporaryDataPath();
     tempPath /= "just_a_worldspawn.map";
-    auto infoFilePath = fs::path(tempPath).replace_extension("darkradiant");
+    auto infoFilePath = fs::path(tempPath).replace_extension("project");
 
     auto format = GlobalMapFormatManager().getMapFormatForFilename(tempPath.string());
 
@@ -794,7 +794,7 @@ TEST_F(MapSavingTest, saveMapCreatesBackup)
     checkAltarScene();
 
     fs::path mapBackupPath = mapPath.replace_extension("bak");
-    fs::path infoFileBackupPath = mapPath.replace_extension("darkradiant").string() + ".bak";
+    fs::path infoFileBackupPath = mapPath.replace_extension("project").string() + ".bak";
 
     EXPECT_FALSE(os::fileOrDirExists(mapBackupPath));
     EXPECT_FALSE(os::fileOrDirExists(infoFileBackupPath));
@@ -867,7 +867,7 @@ TEST_F(MapSavingTest, saveMapReplacesOldBackup)
     auto originalBackupSize = fs::file_size(mapBackupPath);
     auto originalBackupModTime = fs::last_write_time(mapBackupPath);
 
-    fs::path infoFileBackupPath = fs::path(mapPath).replace_extension("darkradiant").string() + ".bak";
+    fs::path infoFileBackupPath = fs::path(mapPath).replace_extension("project").string() + ".bak";
 
     std::ofstream fakeInfoBackup(infoFileBackupPath.string());
     fakeInfoBackup << "123=info";
@@ -912,7 +912,7 @@ TEST_F(MapSavingTest, saveMapOpenedInModRelativePath)
 
     // Remove the backups
     fs::remove(tempPath.replace_extension("bak"));
-    fs::remove(tempPath.replace_extension("darkradiant").string() + ".bak");
+    fs::remove(tempPath.replace_extension("project").string() + ".bak");
 }
 
 TEST_F(MapSavingTest, saveMapOpenedInAbsolutePath)
@@ -932,7 +932,7 @@ TEST_F(MapSavingTest, saveMapOpenedInAbsolutePath)
 
     // Remove the backups
     fs::remove(tempPath.replace_extension("bak"));
-    fs::remove(tempPath.replace_extension("darkradiant").string() + ".bak");
+    fs::remove(tempPath.replace_extension("project").string() + ".bak");
 }
 
 TEST_F(MapSavingTest, saveArchivedMapWillAskForFilename)
@@ -1055,7 +1055,7 @@ TEST_F(MapSavingTest, savingOpenedMapFileDoesntWarnAboutOverwrite)
 
     // Remove the backups
     fs::remove(tempPath.replace_extension("bak"));
-    fs::remove(tempPath.replace_extension("darkradiant").string() + ".bak");
+    fs::remove(tempPath.replace_extension("project").string() + ".bak");
 }
 
 TEST_F(MapSavingTest, saveAsDoesntWarnAboutOverwrite)
@@ -1274,7 +1274,7 @@ TEST_F(MapSavingTest, AutoSaveSnapshotsSupportRelativePaths)
 
     if (!fullPath.empty())
     {
-        fs::remove(os::replaceExtension(fullPath, "darkradiant"));
+        fs::remove(os::replaceExtension(fullPath, "project"));
         fs::remove(fullPath);
     }
 }
@@ -1304,7 +1304,7 @@ TEST_F(MapSavingTest, AutoSaveSnapshotsSupportAbsolutePaths)
     GlobalCommandSystem().executeCommand("OpenMap", expectedSnapshotPath);
     checkAltarScene();
 
-    fs::remove(os::replaceExtension(expectedSnapshotPath, "darkradiant"));
+    fs::remove(os::replaceExtension(expectedSnapshotPath, "project"));
     fs::remove(expectedSnapshotPath);
 }
 
@@ -1609,7 +1609,7 @@ TEST_F(MapLoadingTest, WarningAboutMissingInfoFile)
 
     // Remove the info file
     auto infoFilePath = mapPath;
-    infoFilePath.replace_extension("darkradiant");
+    infoFilePath.replace_extension("project");
     fs::remove(infoFilePath);
 
     // Listen for a warning message
@@ -1617,10 +1617,10 @@ TEST_F(MapLoadingTest, WarningAboutMissingInfoFile)
 
     GlobalCommandSystem().executeCommand("OpenMap", mapPath.string());
 
-    // The name of the .darkradiant file should appear in the message
+    // The name of the .project file should appear in the message
     auto infoFilename = infoFilePath.filename().string();
     EXPECT_NE(receiver.getReceivedMessage().find(infoFilename), std::string::npos)
-        << "Didn't receive a warning about the missing .darkradiant file";
+        << "Didn't receive a warning about the missing .project file";
 }
 
 }

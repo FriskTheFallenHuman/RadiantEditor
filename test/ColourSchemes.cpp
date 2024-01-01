@@ -13,7 +13,7 @@ namespace test
 
 namespace
 {
-    const char* const SCHEME_DARKRADIANT_DEFAULT = "DarkRadiant Default";
+    const char* const SCHEME_RADIANTEDITOR_DEFAULT = "RadiantEditor Default";
     const char* const SCHEME_QE3 = "QE3Radiant Original";
     const char* const SCHEME_BLACK_AND_GREEN = "Black & Green";
     const char* const SCHEME_MAYA_MAX = "Maya/Max/Lightwave Emulation";
@@ -119,7 +119,7 @@ std::size_t getItemCountInScheme(const colours::IColourScheme& scheme)
 TEST_F(ColourSchemeTestWithEmptySettings, LoadDefaultSchemes)
 {
     auto defaultSchemeNames = {
-        SCHEME_DARKRADIANT_DEFAULT,
+        SCHEME_RADIANTEDITOR_DEFAULT,
         SCHEME_QE3,
         SCHEME_BLACK_AND_GREEN,
         SCHEME_MAYA_MAX,
@@ -152,7 +152,7 @@ TEST_F(ColourSchemeTestWithEmptySettings, LoadDefaultSchemes)
 
 TEST_F(ColourSchemeTestWithEmptySettings, DefaultSchemeIsActive)
 {
-    EXPECT_EQ(GlobalColourSchemeManager().getActiveScheme().getName(), SCHEME_DARKRADIANT_DEFAULT);
+    EXPECT_EQ(GlobalColourSchemeManager().getActiveScheme().getName(), SCHEME_RADIANTEDITOR_DEFAULT);
 }
 
 TEST_F(ColourSchemeTestWithEmptySettings, ChangeActiveScheme)
@@ -167,7 +167,7 @@ TEST_F(ColourSchemeTestWithEmptySettings, ActiveSchemePersisted)
     // Check the current default
     auto activeSchemes = GlobalRegistry().findXPath("user/ui/colourschemes//colourscheme[@active='1']");
     EXPECT_EQ(activeSchemes.size(), 1);
-    EXPECT_EQ(activeSchemes[0].getAttributeValue("name"), SCHEME_DARKRADIANT_DEFAULT);
+    EXPECT_EQ(activeSchemes[0].getAttributeValue("name"), SCHEME_RADIANTEDITOR_DEFAULT);
 
     auto newSchemeName = SCHEME_SUPER_MAL;
     GlobalColourSchemeManager().setActive(newSchemeName);
@@ -213,7 +213,7 @@ void modifySchemeColour(const std::string& schemeToModify, const std::string& co
 TEST_F(ColourSchemeTestWithEmptySettings, SystemThemeColourChangePersisted)
 {
     Vector3 newValue(0.99, 0.99, 0.99);
-    modifySchemeColour(SCHEME_DARKRADIANT_DEFAULT, "default_brush", newValue);
+    modifySchemeColour(SCHEME_RADIANTEDITOR_DEFAULT, "default_brush", newValue);
 
     // Export the state to the registry and save it to disk
     GlobalColourSchemeManager().saveColourSchemes();
@@ -224,7 +224,7 @@ TEST_F(ColourSchemeTestWithEmptySettings, SystemThemeColourChangePersisted)
     std::string savedColoursFile = manager.getCurrentVersionSettingsFolder() + "colours.xml";
     EXPECT_TRUE(fs::exists(savedColoursFile)) << "Could not find saved colours file: " << savedColoursFile;
 
-    auto savedScheme = loadSchemeFromXml(SCHEME_DARKRADIANT_DEFAULT, savedColoursFile);
+    auto savedScheme = loadSchemeFromXml(SCHEME_RADIANTEDITOR_DEFAULT, savedColoursFile);
     EXPECT_EQ(savedScheme["default_brush"], newValue);
 }
 
@@ -233,7 +233,7 @@ TEST_F(ColourSchemeTestWithEmptySettings, CopiedSchemePersisted)
     auto newSchemeName = "My Copied Scheme";
 
     // Make a copy of the default scheme
-    GlobalColourSchemeManager().copyScheme(SCHEME_DARKRADIANT_DEFAULT, newSchemeName);
+    GlobalColourSchemeManager().copyScheme(SCHEME_RADIANTEDITOR_DEFAULT, newSchemeName);
 
     // Export the state to the registry
     GlobalColourSchemeManager().saveColourSchemes();
@@ -247,7 +247,7 @@ TEST_F(ColourSchemeTestWithEmptySettings, CopiedSchemePersisted)
     EXPECT_TRUE(fs::exists(savedColoursFile)) << "Could not find saved colours file: " << savedColoursFile;
 
     auto savedCopiedScheme = loadSchemeFromXml(newSchemeName, savedColoursFile);
-    auto savedDefaultScheme = loadSchemeFromXml(SCHEME_DARKRADIANT_DEFAULT, savedColoursFile);
+    auto savedDefaultScheme = loadSchemeFromXml(SCHEME_RADIANTEDITOR_DEFAULT, savedColoursFile);
 
     EXPECT_EQ(savedCopiedScheme.size(), savedDefaultScheme.size());
 
@@ -310,7 +310,7 @@ TEST_F(ColourSchemeTestWithUserColours, RestoreAllSchemesFromUserFile)
     // The colours_userdefined.xml file specifically changes the "camera_background"
     // colour in the SCHEME_BLACK_AND_GREEN theme, plus it adds a custom theme named MyMaya
     auto storedSchemeNames = {
-        SCHEME_DARKRADIANT_DEFAULT,
+        SCHEME_RADIANTEDITOR_DEFAULT,
         SCHEME_QE3,
         SCHEME_BLACK_AND_GREEN,
         SCHEME_MAYA_MAX,
@@ -343,7 +343,7 @@ TEST_F(ColourSchemeTestWithUserColours, SavedUserSchemesAreNotReadOnly)
     EXPECT_TRUE(fs::exists(savedColoursFile)) << "Could not find saved colours file: " << savedColoursFile;
 
     std::set<std::string> readOnlySchemes = {
-        SCHEME_DARKRADIANT_DEFAULT,
+        SCHEME_RADIANTEDITOR_DEFAULT,
         SCHEME_QE3,
         SCHEME_BLACK_AND_GREEN,
         SCHEME_MAYA_MAX,
@@ -369,7 +369,7 @@ TEST_F(ColourSchemeTestWithUserColours, ColourChangePersisted)
 {
     // This is the same test as TEST_F(ColourSchemeTestWithEmptySettings, SystemThemeColourChangePersisted) above
     Vector3 newValue(0.99, 0.99, 0.99);
-    modifySchemeColour(SCHEME_DARKRADIANT_DEFAULT, "default_brush", newValue);
+    modifySchemeColour(SCHEME_RADIANTEDITOR_DEFAULT, "default_brush", newValue);
     modifySchemeColour("MyMaya", "default_brush", newValue);
 
     // Export the state to the registry and save it to disk
@@ -381,7 +381,7 @@ TEST_F(ColourSchemeTestWithUserColours, ColourChangePersisted)
     std::string savedColoursFile = manager.getCurrentVersionSettingsFolder() + "colours.xml";
     EXPECT_TRUE(fs::exists(savedColoursFile)) << "Could not find saved colours file: " << savedColoursFile;
 
-    auto savedDefaultScheme = loadSchemeFromXml(SCHEME_DARKRADIANT_DEFAULT, savedColoursFile);
+    auto savedDefaultScheme = loadSchemeFromXml(SCHEME_RADIANTEDITOR_DEFAULT, savedColoursFile);
     EXPECT_EQ(savedDefaultScheme["default_brush"], newValue);
 
     auto savedUserScheme = loadSchemeFromXml("MyMaya", savedColoursFile);
@@ -428,18 +428,18 @@ TEST_F(ColourSchemeTestWithUserColours, RestoreDeletedThemeFromRegistry)
 TEST_F(ColourSchemeTestWithUserColours, RestoreChangedColourFromRegistry)
 {
     Vector3 newValue(0.99, 0.99, 0.99);
-    modifySchemeColour(SCHEME_DARKRADIANT_DEFAULT, "default_brush", newValue);
+    modifySchemeColour(SCHEME_RADIANTEDITOR_DEFAULT, "default_brush", newValue);
     modifySchemeColour("MyMaya", "default_brush", newValue);
 
     EXPECT_EQ(GlobalColourSchemeManager().getColourScheme("MyMaya").getColour("default_brush").getColour(), newValue);
-    EXPECT_EQ(GlobalColourSchemeManager().getColourScheme(SCHEME_DARKRADIANT_DEFAULT).getColour("default_brush").getColour(), newValue);
+    EXPECT_EQ(GlobalColourSchemeManager().getColourScheme(SCHEME_RADIANTEDITOR_DEFAULT).getColour("default_brush").getColour(), newValue);
 
     // Restore the changes from the registry
     GlobalColourSchemeManager().restoreColourSchemes();
 
     // The changes should be undone
     EXPECT_NE(GlobalColourSchemeManager().getColourScheme("MyMaya").getColour("default_brush").getColour(), newValue);
-    EXPECT_NE(GlobalColourSchemeManager().getColourScheme(SCHEME_DARKRADIANT_DEFAULT).getColour("default_brush").getColour(), newValue);
+    EXPECT_NE(GlobalColourSchemeManager().getColourScheme(SCHEME_RADIANTEDITOR_DEFAULT).getColour("default_brush").getColour(), newValue);
 }
 
 TEST_F(ColourSchemeTestWithUserColours, ForeachScheme)
@@ -452,7 +452,7 @@ TEST_F(ColourSchemeTestWithUserColours, ForeachScheme)
     });
 
     std::set<std::string> expectedSchemeNames = {
-        SCHEME_DARKRADIANT_DEFAULT,
+        SCHEME_RADIANTEDITOR_DEFAULT,
         SCHEME_QE3,
         SCHEME_BLACK_AND_GREEN,
         SCHEME_MAYA_MAX,

@@ -105,7 +105,7 @@ void Radiant::startup()
 
 void Radiant::createLogFile()
 {
-	_logFile.reset(new applog::LogFile(_context.getCacheDataPath() + "darkradiant.log"));
+	_logFile.reset(new applog::LogFile(_context.getCacheDataPath() + "radianteditor.log"));
 
 	if (_logFile->isOpen())
 	{
@@ -152,7 +152,7 @@ std::shared_ptr<Radiant>& Radiant::InstancePtr()
 
 }
 
-extern "C" DARKRADIANT_DLLEXPORT radiant::IRadiant* SYMBOL_CREATE_RADIANT(IApplicationContext& context)
+extern "C" RADIANTEDITOR_DLLEXPORT radiant::IRadiant* SYMBOL_CREATE_RADIANT(IApplicationContext& context)
 {
 	auto& instancePtr = radiant::Radiant::InstancePtr();
 
@@ -168,7 +168,7 @@ extern "C" DARKRADIANT_DLLEXPORT radiant::IRadiant* SYMBOL_CREATE_RADIANT(IAppli
 	return instancePtr.get();
 }
 
-extern "C" DARKRADIANT_DLLEXPORT void SYMBOL_DESTROY_RADIANT(radiant::IRadiant* radiant)
+extern "C" RADIANTEDITOR_DLLEXPORT void SYMBOL_DESTROY_RADIANT(radiant::IRadiant* radiant)
 {
 	assert(radiant::Radiant::InstancePtr().get() == radiant);
 

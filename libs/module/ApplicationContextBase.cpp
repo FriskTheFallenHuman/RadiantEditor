@@ -81,7 +81,7 @@ std::string ApplicationContextBase::getRuntimeDataPath() const
     return path;
 #elif defined(POSIX)
 #   if defined(ENABLE_RELOCATION)
-    return _appPath + "../share/darkradiant/";
+    return _appPath + "../share/radianteditor/";
 #   elif defined(PKGDATADIR)
     return std::string(PKGDATADIR) + "/";
 #   else
@@ -98,7 +98,7 @@ std::string ApplicationContextBase::getHTMLPath() const
     return getRuntimeDataPath();
 #elif defined(POSIX)
 #if defined(ENABLE_RELOCATION)
-    return _appPath + "../share/doc/darkradiant/";
+    return _appPath + "../share/doc/radianteditor/";
 #elif defined(HTMLDIR)
     return std::string(HTMLDIR) + "/";
 #else
@@ -230,7 +230,7 @@ std::string getXDGPath(const std::string& envVar, const std::string& fallback)
     {
         // Use default path within $HOME/fallback
         static const std::string HOME_DIR = strenv("HOME");
-        return os::standardPathWithSlash(HOME_DIR) + fallback + "/darkradiant/";
+        return os::standardPathWithSlash(HOME_DIR) + fallback + "/radianteditor/";
     }
     else
     {
@@ -293,8 +293,8 @@ void ApplicationContextBase::initialise(int argc, char* argv[])
         );
     }
 
-    // Construct DarkRadiant home directory
-    _homePath = appData + "\\DarkRadiant";
+    // Construct RadiantEditor home directory
+    _homePath = appData + "\\RadiantEditor";
     if (!os::makeDirectory(_homePath))
     {
         rConsoleError() << "ApplicationContextBase: could not create home directory "

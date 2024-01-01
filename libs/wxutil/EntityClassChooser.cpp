@@ -31,7 +31,7 @@ namespace
     constexpr const char* const TITLE_CONVERT_TO_ENTITY = N_("Convert to Entity");
     constexpr const char* const TITLE_SELECT_ENTITY = N_("Select Entity Class");
 
-    constexpr const char* const FOLDER_ICON = "folder16.png";
+    constexpr const char* const FOLDER_ICON = "icon_folder.png";
     constexpr const char* const ENTITY_ICON = "cmenu_add_entity.png";
 
     // Registry XPath to lookup key that specifies the display folder
