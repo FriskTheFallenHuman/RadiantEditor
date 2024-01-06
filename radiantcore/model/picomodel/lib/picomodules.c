@@ -46,33 +46,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /* external modules */
 extern const picoModule_t picoModuleMD3;
-extern const picoModule_t picoModule3DS;
 extern const picoModule_t picoModuleASE;
 extern const picoModule_t picoModuleOBJ;
-extern const picoModule_t picoModuleMS3D;
-extern const picoModule_t picoModuleMDC;
-extern const picoModule_t picoModuleMD2;
-extern const picoModule_t picoModuleFM;
 extern const picoModule_t picoModuleLWO;
 extern const picoModule_t picoModuleTerrain;
-extern const picoModule_t picoModuleIQM;
-
-
 
 /* list of all supported file format modules */
 const picoModule_t *picoModules[] =
 {
 	&picoModuleMD3,		/* quake3 arena md3 */
-	&picoModule3DS,		/* autodesk 3ds */
 	//&picoModuleASE,		/* autodesk ase */
-	&picoModuleMS3D,	/* milkshape3d */
-	&picoModuleMDC,		/* return to castle wolfenstein mdc */
-	&picoModuleMD2,		/* quake2 md2 */
-	&picoModuleFM,		/* heretic2 fm */
 	&picoModuleLWO,		/* lightwave object */
 	&picoModuleTerrain,	/* picoterrain object */
 	&picoModuleOBJ,		/* wavefront object */
-	&picoModuleIQM,		/* interquake model */
 	NULL				/* arnold */
 };
 

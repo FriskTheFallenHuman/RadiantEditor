@@ -29,7 +29,6 @@
 #include "wxutil/EntityClassChooser.h"
 #include "wxutil/Bitmap.h"
 #include "wxutil/decl/DeclFileInfo.h"
-#include "materials/FrobStageSetup.h"
 #include "parser/DefBlockSyntaxParser.h"
 #include <fmt/format.h>
 #include "gamelib.h"
@@ -607,7 +606,6 @@ void MaterialEditor::_onBasicMapEntryChanged(const std::string& entryName, IShad
             updateStageListFromMaterial(); 
             onMaterialChanged();
             updateBasicImagePreview();
-            updateBasicFrobStageControls();
         }
 
         return;
@@ -631,8 +629,6 @@ void MaterialEditor::_onBasicMapEntryChanged(const std::string& entryName, IShad
         stageCreated = true;
     }
 
-    applyMapExpressionToStage(stage, textCtrl->GetValue().ToStdString());
-
     if (stageCreated)
     {
         updateStageListFromMaterial();
@@ -640,7 +636,6 @@ void MaterialEditor::_onBasicMapEntryChanged(const std::string& entryName, IShad
 
     updateStageControls();
     updateBasicImagePreview();
-    updateBasicFrobStageControls();
     onMaterialChanged();
 }
 
@@ -662,7 +657,6 @@ void MaterialEditor::setupBasicMaterialPage()
         _material->setEditorImageExpressionFromString(editorImageEntry->GetValue().ToStdString());
         updateStageBlendControls();
         updateBasicImagePreview();
-        updateBasicFrobStageControls();
         onMaterialChanged();
     });
 
@@ -706,16 +700,6 @@ void MaterialEditor::setupBasicMaterialPage()
 
     auto specularTabImage = getControl<wxStaticBitmap>("BasicSpecularTabImage");
     replaceControl(specularTabImage, new TexturePreview(specularTabImage->GetParent(), TexturePreview::ImageType::Specular));
-
-    auto addFrob = getControl<wxButton>("BasicAddFrobStages");
-    auto removeFrob = getControl<wxButton>("BasicRemoveFrobStages");
-    auto testFrob = getControl<wxButton>("BasicTestFrobStages");
-
-    addFrob->Bind(wxEVT_BUTTON, &MaterialEditor::_onBasicAddFrobStages, this);
-    removeFrob->Bind(wxEVT_BUTTON, &MaterialEditor::_onBasicRemoveFrobStages, this);
-
-    testFrob->Bind(wxEVT_LEFT_DOWN, &MaterialEditor::_onBasicTestFrobStages, this);
-    testFrob->Bind(wxEVT_LEFT_UP, &MaterialEditor::_onBasicTestFrobStages, this);
 }
 
 void MaterialEditor::createDecalColourBinding(const std::string& controlName, const std::function<double(const MaterialPtr&)>& loadFunc)
@@ -1293,29 +1277,6 @@ void MaterialEditor::createSpinCtrlDoubleBinding(const std::string& ctrlName,
         std::bind(&MaterialEditor::getEditableStageForSelection, this)));
 }
 
-void MaterialEditor::applyMapExpressionToStage(const IEditableShaderLayer::Ptr& stage, const std::string& value)
-{
-    // Try to keep an existing frob highlight stage intact
-    bool hadFrobHighlightStage = false;
-
-    if (stage->getType() == IShaderLayer::DIFFUSE)
-    {
-        hadFrobHighlightStage = shaders::FrobStageSetup::IsPresent(_material);
-
-        if (hadFrobHighlightStage)
-        {
-            shaders::FrobStageSetup::RemoveFromMaterial(_material);
-        }
-    }
-
-    stage->setMapExpressionFromString(value);
-
-    if (hadFrobHighlightStage)
-    {
-        shaders::FrobStageSetup::AddToMaterial(_material);
-    }
-}
-
 void MaterialEditor::setupMaterialStageProperties()
 {
     auto stageImageMap = getControl<MapExpressionEntry>("MaterialStageImageMap");
@@ -1328,7 +1289,6 @@ void MaterialEditor::setupMaterialStageProperties()
         [this](const IEditableShaderLayer::Ptr& stage, const std::string& value)
         {
             if (_stageUpdateInProgress) return;
-            applyMapExpressionToStage(stage, value);
         },
         [this]() { onMaterialChanged(); updateBasicPageFromMaterial(); },
         std::bind(&MaterialEditor::getEditableStageForSelection, this)));
@@ -2095,24 +2055,6 @@ void MaterialEditor::updateBasicPageFromMaterial()
     auto specular = findMaterialStageByType(IShaderLayer::SPECULAR).first;
     expression = specular ? specular->getMapExpression() : shaders::IMapExpression::Ptr();
     specularImageMap->SetValue(expression ? expression->getExpressionString() : "");
-
-    updateBasicFrobStageControls();
-}
-
-void MaterialEditor::updateBasicFrobStageControls()
-{
-    auto addFrob = getControl<wxButton>("BasicAddFrobStages");
-    auto removeFrob = getControl<wxButton>("BasicRemoveFrobStages");
-
-    bool hasFrobStages = shaders::FrobStageSetup::IsPresent(_material);
-    bool materialCanBeModified = _material && GlobalMaterialManager().materialCanBeModified(_material->getName());
-
-    // We can add the frob stage if a diffuse map is present
-    addFrob->Enable(materialCanBeModified && !hasFrobStages && !shaders::FrobStageSetup::GetDiffuseMap(_material).empty());
-    removeFrob->Enable(materialCanBeModified && hasFrobStages);
-
-    auto testFrob = getControl<wxButton>("BasicTestFrobStages");
-    testFrob->Enable(materialCanBeModified && hasFrobStages);
 }
 
 void MaterialEditor::updateBasicImagePreview()
@@ -3077,54 +3019,6 @@ void MaterialEditor::convertTextCtrlToMapExpressionEntry(const std::string& ctrl
 
     auto oldCtrl = findNamedObject<wxTextCtrl>(this, ctrlName);
     replaceControl(oldCtrl, new MapExpressionEntry(oldCtrl->GetParent(), windowToPlaceDialogsOn));
-}
-
-void MaterialEditor::_onBasicAddFrobStages(wxCommandEvent& ev)
-{
-    if (!_material || !GlobalMaterialManager().materialCanBeModified(_material->getName()))
-    {
-        return;
-    }
-
-    try
-    {
-        shaders::FrobStageSetup::AddToMaterial(_material);
-    }
-    catch (const std::runtime_error& ex)
-    {
-        wxutil::Messagebox::ShowError(ex.what(), this);
-        rError() << ex.what() << std::endl;
-    }
-
-    updateControlsFromMaterial();
-    onMaterialChanged();
-}
-
-void MaterialEditor::_onBasicRemoveFrobStages(wxCommandEvent& ev)
-{
-    if (!_material || !GlobalMaterialManager().materialCanBeModified(_material->getName()))
-    {
-        return;
-    }
-
-    try
-    {
-        shaders::FrobStageSetup::RemoveFromMaterial(_material);
-    }
-    catch (const std::runtime_error& ex)
-    {
-        wxutil::Messagebox::ShowError(ex.what(), this);
-        rError() << ex.what() << std::endl;
-    }
-    
-    updateControlsFromMaterial();
-    onMaterialChanged();
-}
-
-void MaterialEditor::_onBasicTestFrobStages(wxMouseEvent& ev)
-{
-    _preview->enableFrobHighlight(ev.ButtonDown());
-    ev.Skip();
 }
 
 void MaterialEditor::assignDecalInfoToMaterial(const MaterialPtr& material, bool isEnabled)

@@ -76,10 +76,6 @@ extern "C"
 #define PICO_IOERR	2
 
 /* types */
-#ifndef byte
-	typedef unsigned char byte;
-#endif
-
 typedef struct picoParser_s
 {
 	char	*buffer;

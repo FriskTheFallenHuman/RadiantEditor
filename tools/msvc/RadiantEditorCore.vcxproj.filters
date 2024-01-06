@@ -646,25 +646,10 @@
     <ClCompile Include="..\..\radiantcore\model\picomodel\lib\picomodules.c">
       <Filter>src\model\picomodel\lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_3ds.c">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_fm.c">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_lwo.c">
       <Filter>src\model\picomodel\lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_md2.c">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_md3.c">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_mdc.c">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_ms3d.c">
       <Filter>src\model\picomodel\lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_obj.c">
@@ -1020,9 +1005,6 @@
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\model\import\FbxModelLoader.cpp">
       <Filter>src\model\import</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\radiantcore\model\picomodel\lib\pm_iqm.c">
-      <Filter>src\model\picomodel\lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\radiantcore\map\autosaver\AutoSaver.cpp">
       <Filter>src\map\autosaver</Filter>
@@ -1741,9 +1723,6 @@
       <Filter>src\model\picomodel\lib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\model\picomodel\lib\picomodel.h">
-      <Filter>src\model\picomodel\lib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\radiantcore\model\picomodel\lib\pm_fm.h">
       <Filter>src\model\picomodel\lib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\radiantcore\model\export\AseExporter.h">

@@ -27,6 +27,7 @@
 	<!-- Types of resource files which are used by this game -->
 	<filetypes>
 		<texture>
+			<extension>png</extension>
 			<extension>tga</extension>
 			<extension>jpg</extension>
 			<extension>dds</extension>
