@@ -204,10 +204,10 @@ public:
  	 */
  	void appendPoints(bool columns, bool beginning) override;
 
-	void ConstructPrefab(const AABB& aabb, EPatchPrefab eType, EViewType viewType, std::size_t width = 3, std::size_t height = 3);
+	void ConstructPrefab(const AABB& aabb, EPatchPrefab eType, OrthoOrientation viewType, std::size_t width = 3, std::size_t height = 3);
 	void constructPlane(const AABB& aabb, int axis, std::size_t width, std::size_t height);
-	void constructBevel(const AABB& aabb, EViewType viewType);
-	void constructEndcap(const AABB& aabb, EViewType viewType);
+	void constructBevel(const AABB& aabb, OrthoOrientation viewType);
+	void constructEndcap(const AABB& aabb, OrthoOrientation viewType);
 	void invertMatrix() override;
 
 	void transposeMatrix() override;
@@ -215,8 +215,7 @@ public:
 	void redisperseRows() override;
 	void redisperseColumns() override;
 	void insertRemove(bool insert, bool column, bool first) override;
-  	Patch* MakeCap(Patch* patch, patch::CapType eType, EMatrixMajor mt, bool bFirst);
-	void ConstructSeam(patch::CapType eType, Vector3* p, std::size_t width);
+    void constructSeam(patch::CapType eType, std::vector<Vector3>& points, std::size_t width);
 
 	void flipTexture(int axis) override;
 

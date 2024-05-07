@@ -7,24 +7,8 @@
 namespace wxutil
 {
 
-FreezePointer::FreezePointer() :
-    _freezePosX(0),
-    _freezePosY(0),
-    _freezePointer(true),
-    _hidePointer(true),
-    _motionReceivesDeltas(true),
-    _capturedWindow(nullptr)
-{}
-
 void FreezePointer::startCapture(wxWindow* window,
                                  const MotionFunction& motionDelta,
-                                 const CaptureLostFunction& endMove)
-{
-    startCapture(window, motionDelta, endMove, true, true, true);
-}
-
-void FreezePointer::startCapture(wxWindow* window, 
-                                 const MotionFunction& motionDelta, 
                                  const CaptureLostFunction& endMove,
                                  bool freezePointer,
                                  bool hidePointer,
@@ -34,17 +18,17 @@ void FreezePointer::startCapture(wxWindow* window,
 	ASSERT_MESSAGE(motionDelta, "can't capture pointer");
 	ASSERT_MESSAGE(endMove, "can't capture pointer");
 
-    // Pass the flags before going ahead
-    setFreezePointer(freezePointer);
-    setHidePointer(hidePointer);
-    setSendMotionDeltas(motionReceivesDeltas);
-	
-	// Find the toplevel window 
+    // Store the flags before going ahead
+    _freezePointer = freezePointer;
+    _hidePointer = hidePointer;
+    _motionReceivesDeltas = motionReceivesDeltas;
+
+	// Find the toplevel window
 	wxWindow* topLevel = wxGetTopLevelParent(window);
 
     if (_hidePointer)
     {
-        topLevel->SetCursor(wxCursor(wxCURSOR_BLANK));
+        window->SetCursor(wxCursor(wxCURSOR_BLANK));
     }
 
     // We capture the mouse on the toplevel app, coordinates
@@ -81,7 +65,7 @@ void FreezePointer::startCapture(wxWindow* window,
     topLevel->Connect(wxEVT_MOUSE_CAPTURE_LOST, wxMouseCaptureLostEventHandler(FreezePointer::onMouseCaptureLost), NULL, this);
 }
 
-bool FreezePointer::isCapturing(wxWindow* window)
+bool FreezePointer::isCapturing(wxWindow* window) const
 {
     return _capturedWindow != nullptr;
 }
@@ -108,7 +92,7 @@ void FreezePointer::endCapture()
 
     if (_hidePointer)
     {
-        topLevel->SetCursor(wxCursor(wxCURSOR_DEFAULT));
+        window->SetCursor(wxCursor(wxCURSOR_DEFAULT));
     }
 
     if (topLevel->HasCapture())
@@ -127,22 +111,7 @@ void FreezePointer::endCapture()
 	topLevel->Disconnect(wxEVT_MIDDLE_DOWN, wxMouseEventHandler(FreezePointer::onMouseDown), NULL, this);
 }
 
-void FreezePointer::setFreezePointer(bool shouldFreeze)
-{
-    _freezePointer = shouldFreeze;
-}
-
-void FreezePointer::setHidePointer(bool shouldHide)
-{
-    _hidePointer = shouldHide;
-}
-
-void FreezePointer::setSendMotionDeltas(bool shouldSendDeltasOnly)
-{
-    _motionReceivesDeltas = shouldSendDeltasOnly;
-}
-
-void FreezePointer::connectMouseEvents(const MouseEventFunction& onMouseDown, 
+void FreezePointer::connectMouseEvents(const MouseEventFunction& onMouseDown,
 									   const MouseEventFunction& onMouseUp)
 {
 	_onMouseUp = onMouseUp;
@@ -159,7 +128,7 @@ void FreezePointer::onMouseDown(wxMouseEvent& ev)
 {
 	if (_onMouseDown && _capturedWindow)
 	{
-        // The connected mouse up event expects window coordinates, 
+        // The connected mouse up event expects window coordinates,
         // not coordinates relative to the captured window
         wxMouseEvent copy(ev);
         wxPoint windowMousePos = _capturedWindow->ScreenToClient(wxGetMousePosition());
@@ -175,7 +144,7 @@ void FreezePointer::onMouseUp(wxMouseEvent& ev)
 {
     if (_onMouseUp && _capturedWindow)
 	{
-        // The connected mouse up event expects window coordinates, 
+        // The connected mouse up event expects window coordinates,
         // not coordinates relative to the captured window
         wxMouseEvent copy(ev);
         wxPoint windowMousePos = _capturedWindow->ScreenToClient(wxGetMousePosition());
@@ -192,7 +161,7 @@ void FreezePointer::onMouseMotion(wxMouseEvent& ev)
     if (!_capturedWindow) return;
 
 	wxPoint windowMousePos = _capturedWindow->ScreenToClient(wxGetMousePosition());
-		
+
 	int dx = windowMousePos.x - _freezePosX;
 	int dy = windowMousePos.y - _freezePosY;
 

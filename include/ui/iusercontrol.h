@@ -9,15 +9,19 @@ namespace ui
 {
 
 /**
- * User control interface, to be implemented by all widgets that
- * can be packed into RadiantEditor's main frame or group dialog tabs.
+ * @brief An object which can create dockable widgets of a specific type.
+ *
+ * Each IUserControlCreator instance is responsible for creating dockable widgets of a
+ * single type (e.g. ortho view, media browser etc), via its createWidget() method. The
+ * IUserInterfaceModule maintains a set of control creators, which can be populated
+ * dynamically via various UI modules and implementation code.
  */
-class IUserControl
+class IUserControlCreator
 {
 public:
-    virtual ~IUserControl() {}
+    virtual ~IUserControlCreator() {}
 
-    using Ptr = std::shared_ptr<IUserControl>;
+    using Ptr = std::shared_ptr<IUserControlCreator>;
 
     // Returns the name of this control. This is an identifier corresponding to the
     // UserControl enumeration, like UserControl::Camera, or a plugin-defined identifier
@@ -30,9 +34,12 @@ public:
     // Optional icon file name to use for tab captions, e.g. "icon_texture.png"
     virtual std::string getIcon() { return {}; }
 
-    // Creates a new wxWidget window for packing into a dialog or sizer
-    // Widget ownership is transferred to the caller, IUserControl implementations
-    // will not delete the returned window
+    /**
+     * @brief Create a new wxWidget window for packing into a dialog or sizer.
+     *
+     * Widget ownership is transferred to the caller, IUserControlCreator implementations
+     * will not delete the returned window.
+     */
     virtual wxWindow* createWidget(wxWindow* parent) = 0;
 };
 

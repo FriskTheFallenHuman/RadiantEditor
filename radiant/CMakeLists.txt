@@ -46,6 +46,7 @@ add_executable(darkradiant
                ui/eclasstree/EClassTreeBuilder.cpp
                ui/eclasstree/EClassTree.cpp
                ui/einspector/AddPropertyDialog.cpp
+               ui/einspector/Algorithm.cpp
                ui/einspector/AnglePropertyEditor.cpp
                ui/einspector/BooleanPropertyEditor.cpp
                ui/einspector/ClassnamePropertyEditor.cpp
@@ -55,6 +56,7 @@ add_executable(darkradiant
                ui/einspector/EntityPropertyEditor.cpp
                ui/einspector/FloatPropertyEditor.cpp
                ui/einspector/FxPropertyEditor.cpp
+               ui/einspector/InheritPropertyEditor.cpp
                ui/einspector/ModelPropertyEditor.cpp
                ui/einspector/PropertyEditor.cpp
                ui/einspector/PropertyEditorFactory.cpp
@@ -172,7 +174,7 @@ add_executable(darkradiant
                xyview/tools/BrushCreatorTool.cpp
                xyview/tools/ClipperTool.cpp
                xyview/tools/MeasurementTool.cpp
-               xyview/XYWnd.cpp)
+               xyview/OrthoView.cpp)
 target_compile_options(darkradiant PRIVATE ${FREETYPE_CFLAGS} ${GLIB_CFLAGS})
 target_include_directories(darkradiant PRIVATE .)
 target_link_libraries(darkradiant PRIVATE

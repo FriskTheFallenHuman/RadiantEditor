@@ -73,18 +73,8 @@ public:
         {
             auto filePath = _searchPath + filename.substr(prefix.length());
 
-            if (os::fileOrDirExists(filePath))
-            {
-#ifdef __WXMSW__
+            if (os::fileOrDirExists(filePath)) {
                 return wxBitmap(wxImage(filePath));
-#else
-                wxBitmap bm;
-                if (bm.LoadFile(filePath)) {
-                    return bm;
-                }
-
-                rError() << "Failed to load bitmap [" << filePath << "]\n";
-#endif
             }
         }
 
@@ -99,7 +89,15 @@ public:
 };
 
 RadiantApp::RadiantApp()
-{}
+{
+#if defined(__linux__)
+    // The native Wayland backend for GTK does not implement the mouse pointer
+    // warping functions used in the FreezePointer class.  Forcing the backend
+    // to X11 will let us run using XWayland which does provide emulation of
+    // this functionality.
+    setenv("GDK_BACKEND", "x11", 0);
+#endif
+}
 
 RadiantApp::~RadiantApp()
 {}
@@ -243,21 +241,29 @@ void RadiantApp::OnInitCmdLine(wxCmdLineParser& parser)
 
 bool RadiantApp::OnExceptionInMainLoop()
 {
-	try
-	{
-		// This method is called by the main loop controlling code, 
-		// from within the catch(...) block. Let's re-throw the current 
-		// exception and catch it to print the error message at the very least.
-		throw;
-	}
-	catch (const std::exception& ex)
-	{
-		rError() << "Unhandled Exception: " << ex.what() << std::endl;
-        radiant::PopupErrorHandler::HandleError(_("Real Hard RadiantEditor Failure"), 
-            std::string(ex.what()) + "\n\n" + _("Break into the debugger?"));
-	}
+    // This method is called by the main loop controlling code, from within the catch(...)
+    // block. Let's re-throw the current exception and catch it to print the error message
+    // at the very least.
+#if defined(__linux__)
+    try {
+        throw;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Fatal exception in main loop:\n" << e.what() << std::endl;
+    }
 
-	return wxApp::OnExceptionInMainLoop();
+    abort();
+#else
+    try {
+        throw;
+    }
+    catch (const std::exception& ex) {
+        rError() << "Unhandled Exception: " << ex.what() << std::endl;
+        radiant::PopupErrorHandler::HandleError(_("Real Hard Radiant Failure"),
+            std::string(ex.what()) + "\n\n" + _("Break into the debugger?"));
+    }
+    return wxApp::OnExceptionInMainLoop();
+#endif
 }
 
 void RadiantApp::onStartupEvent(wxCommandEvent& ev)
@@ -273,11 +279,11 @@ void RadiantApp::onStartupEvent(wxCommandEvent& ev)
 #endif
 
 	// In first-startup scenarios the game configuration is not present
-	// in which case the GameManager will dispatch a message asking 
+	// in which case the GameManager will dispatch a message asking
 	// for showing a dialog or similar. Connect the listener.
 	_coreModule->get()->getMessageBus().addListener(radiant::IMessage::Type::GameConfigNeeded,
         radiant::TypeListener<game::ConfigurationNeeded>(ui::GameSetupDialog::HandleGameConfigMessage));
-	
+
 	// Pick up all the statically defined modules and register them
 	module::internal::StaticModuleList::RegisterModules();
 

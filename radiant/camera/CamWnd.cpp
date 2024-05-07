@@ -12,6 +12,7 @@
 #include <fmt/format.h>
 #include <sigc++/retype_return.h>
 #include <wx/sizer.h>
+#include <wx/frame.h>
 
 #include "iselectiontest.h"
 #include "selectionlib.h"
@@ -54,7 +55,10 @@ namespace
 inline Vector2 windowvector_for_widget_centre(wxutil::GLWidget& widget)
 {
     wxSize size = widget.GetSize();
-    return Vector2(static_cast<Vector2::ElementType>(size.GetWidth() / 2), static_cast<Vector2::ElementType>(size.GetHeight() / 2));
+    return Vector2(
+        static_cast<Vector2::ElementType>(size.GetWidth() / 2.0),
+        static_cast<Vector2::ElementType>(size.GetHeight() / 2.0)
+    );
 }
 
 // ---------- CamWnd Implementation --------------------------------------------------
@@ -67,17 +71,10 @@ CamWnd::CamWnd(wxWindow* parent, CameraWndManager& owner) :
     _id(++_maxId),
     _view(true),
     _camera(GlobalCameraManager().createCamera(_view, std::bind(&CamWnd::requestRedraw, this, std::placeholders::_1))),
-    _drawing(false),
-    _updateRequested(false),
     _wxGLWidget(new wxutil::GLWidget(_mainWxWidget, std::bind(&CamWnd::onRender, this), "CamWnd")),
     _timer(this),
-    _timerLock(false),
-    _freeMoveEnabled(false),
-    _freeMoveFlags(0),
     _freeMoveTimer(this),
-    _deferredMotionDelta(std::bind(&CamWnd::onDeferredMotionDelta, this, std::placeholders::_1, std::placeholders::_2)),
-    _strafe(false),
-    _strafeForward(false)
+    _deferredMotionDelta(std::bind(&CamWnd::onDeferredMotionDelta, this, std::placeholders::_1, std::placeholders::_2))
 {
     SetSizer(new wxBoxSizer(wxVERTICAL));
     GetSizer()->Add(_mainWxWidget, 1, wxEXPAND);
@@ -150,8 +147,8 @@ void CamWnd::connectEventHandlers()
     toggleCameraGridEvent->connectToolItem(gridButton);
 
     // Refresh the camera view when shadows are enabled/disabled
-    _shadowMappingKeyChangedHandler = GlobalRegistry().signalForKey(RKEY_ENABLE_SHADOW_MAPPING).connect(
-        sigc::mem_fun(this, &CamWnd::queueDraw)
+    _shadowMappingKeyChangedHandler = registry::connect(
+        RKEY_ENABLE_SHADOW_MAPPING, sigc::mem_fun(this, &CamWnd::queueDraw)
     );
 }
 
@@ -245,8 +242,8 @@ void CamWnd::constructToolbar()
         _btnIDs.farClipToggle
     );
 
-    GlobalRegistry().signalForKey(RKEY_ENABLE_FARCLIP).connect(
-        sigc::mem_fun(*this, &CamWnd::setFarClipButtonSensitivity)
+    registry::connect(
+        RKEY_ENABLE_FARCLIP, sigc::mem_fun(*this, &CamWnd::setFarClipButtonSensitivity)
     );
 
     const wxToolBarToolBase* startTimeButton = getToolBarToolByLabel(_camToolbar, "startTimeButton");
@@ -264,8 +261,8 @@ void CamWnd::constructToolbar()
 
     // Handle hiding or showing the toolbar (Preferences/Settings/Camera page)
     updateToolbarVisibility();
-    GlobalRegistry().signalForKey(RKEY_SHOW_CAMERA_TOOLBAR).connect(
-        sigc::mem_fun(this, &CamWnd::updateToolbarVisibility)
+    registry::connect(
+        RKEY_SHOW_CAMERA_TOOLBAR, sigc::mem_fun(this, &CamWnd::updateToolbarVisibility)
     );
 }
 
@@ -542,7 +539,7 @@ void CamWnd::handleFreeMovement(float timePassed)
         origin += g_vector3_axis_z * (timePassed * movementSpeed);
     if (_freeMoveFlags & MOVE_DOWN)
         origin += g_vector3_axis_z * (-timePassed * movementSpeed);
-    
+
     _camera->setCameraOrigin(origin);
 }
 
@@ -1032,7 +1029,7 @@ void CamWnd::captureStates()
     _shaders.mergeActionShaderConflict = GlobalRenderSystem().capture(BuiltInShaderType::CameraMergeActionOverlayConflict);
 }
 
-void CamWnd::releaseStates() 
+void CamWnd::releaseStates()
 {
     _shaders.faceHighlightShader.reset();
     _shaders.primitiveHighlightShader.reset();

@@ -46,6 +46,7 @@ add_executable(drtest
                PatchWelding.cpp
                PointTrace.cpp
                Prefabs.cpp
+               Registry.cpp
                Renderer.cpp
                SceneNode.cpp
                SceneStatistics.cpp
@@ -54,6 +55,7 @@ add_executable(drtest
                Settings.cpp
                SoundManager.cpp
                TextureManipulation.cpp
+               TestOrthoViewManager.cpp
                TextureTool.cpp
                Transformation.cpp
                UndoRedo.cpp

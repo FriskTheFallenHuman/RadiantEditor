@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Project name and version
-project(radianteditor VERSION 3.8.0)
+project(radianteditor VERSION 3.9.0)
 
 # C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -49,11 +49,9 @@ add_compile_definitions(
 
 # Locate system packages
 include(FindPkgConfig)
-pkg_check_modules(XML libxml-2.0 REQUIRED)
 pkg_check_modules(SIGC sigc++-2.0 REQUIRED)
 pkg_check_modules(FTGL ftgl REQUIRED)
 pkg_check_modules(FREETYPE freetype2 REQUIRED)
-pkg_check_modules(XML libxml-2.0 REQUIRED)
 pkg_check_modules(GL gl REQUIRED)
 pkg_check_modules(GLEW glew REQUIRED)
 pkg_check_modules(JPEG libjpeg REQUIRED)

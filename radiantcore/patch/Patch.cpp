@@ -725,50 +725,6 @@ void Patch::appendPoints(bool columns, bool beginning) {
     controlPointsChanged();
 }
 
-Patch* Patch::MakeCap(Patch* patch, patch::CapType eType, EMatrixMajor mt, bool bFirst)
-{
-  std::size_t i, width, height;
-
-  switch(mt)
-  {
-  case ROW:
-    width = _width;
-    height = _height;
-    break;
-  case COL:
-    width = _height;
-    height = _width;
-    break;
-  default:
-    ERROR_MESSAGE("neither row-major nor column-major");
-    return 0;
-  }
-
-  std::vector<Vector3> p(width);
-
-  std::size_t nIndex = (bFirst) ? 0 : height-1;
-  if(mt == ROW)
-  {
-    for (i=0; i<width; i++)
-    {
-      p[(bFirst) ? i : (width-1) - i] = ctrlAt(nIndex, i).vertex;
-    }
-  }
-  else
-  {
-    for (i=0; i<width; i++)
-    {
-      p[(bFirst) ? i : (width-1) - i] = ctrlAt(i, nIndex).vertex;
-    }
-  }
-
-  patch->ConstructSeam(eType, &p.front(), width);
-
-  // greebo: Apply natural texture to that patch, to fix the texcoord==1.#INF bug.
-  patch->scaleTextureNaturally();
-  return patch;
-}
-
 void Patch::flipTexture(int nAxis)
 {
     selection::algorithm::TextureFlipper::FlipPatch(*this, nAxis);
@@ -856,7 +812,7 @@ void Patch::scaleTextureNaturally()
     auto defaultScale = registry::getValue<float>("user/ui/textures/defaultTextureScale");
 
     // Cycles through all the patch columns and assigns s/t coordinates.
-    // During each column or row cycle, the highest world distance between columns or rows 
+    // During each column or row cycle, the highest world distance between columns or rows
     // determines the distance in UV space (longest distance is taken).
     // World distances are scaled to UV space with the actual texture width/height,
     // scaled by the value in the registry.
@@ -1136,73 +1092,73 @@ void Patch::removePoints(bool columns, std::size_t index) {
     }
 }
 
-void Patch::ConstructSeam(patch::CapType eType, Vector3* p, std::size_t width)
+void Patch::constructSeam(patch::CapType eType, std::vector<Vector3>& points, std::size_t width)
 {
   switch(eType)
   {
   case patch::CapType::InvertedBevel:
     {
       setDims(3, 3);
-      _ctrl[0].vertex = p[0];
-      _ctrl[1].vertex = p[1];
-      _ctrl[2].vertex = p[1];
-      _ctrl[3].vertex = p[1];
-      _ctrl[4].vertex = p[1];
-      _ctrl[5].vertex = p[1];
-      _ctrl[6].vertex = p[2];
-      _ctrl[7].vertex = p[1];
-      _ctrl[8].vertex = p[1];
+      _ctrl[0].vertex = points[0];
+      _ctrl[1].vertex = points[1];
+      _ctrl[2].vertex = points[1];
+      _ctrl[3].vertex = points[1];
+      _ctrl[4].vertex = points[1];
+      _ctrl[5].vertex = points[1];
+      _ctrl[6].vertex = points[2];
+      _ctrl[7].vertex = points[1];
+      _ctrl[8].vertex = points[1];
     }
     break;
   case patch::CapType::Bevel:
     {
       setDims(3, 3);
-      Vector3 p3(p[2] + (p[0] - p[1]));
+      Vector3 p3(points[2] + (points[0] - points[1]));
       _ctrl[0].vertex = p3;
       _ctrl[1].vertex = p3;
-      _ctrl[2].vertex = p[2];
+      _ctrl[2].vertex = points[2];
       _ctrl[3].vertex = p3;
       _ctrl[4].vertex = p3;
-      _ctrl[5].vertex = p[1];
+      _ctrl[5].vertex = points[1];
       _ctrl[6].vertex = p3;
       _ctrl[7].vertex = p3;
-      _ctrl[8].vertex = p[0];
+      _ctrl[8].vertex = points[0];
     }
     break;
   case patch::CapType::EndCap:
     {
-      Vector3 p5(math::midPoint(p[0], p[4]));
+      Vector3 p5(math::midPoint(points[0], points[4]));
 
       setDims(3, 3);
-      _ctrl[0].vertex = p[0];
+      _ctrl[0].vertex = points[0];
       _ctrl[1].vertex = p5;
-      _ctrl[2].vertex = p[4];
-      _ctrl[3].vertex = p[1];
-      _ctrl[4].vertex = p[2];
-      _ctrl[5].vertex = p[3];
-      _ctrl[6].vertex = p[2];
-      _ctrl[7].vertex = p[2];
-      _ctrl[8].vertex = p[2];
+      _ctrl[2].vertex = points[4];
+      _ctrl[3].vertex = points[1];
+      _ctrl[4].vertex = points[2];
+      _ctrl[5].vertex = points[3];
+      _ctrl[6].vertex = points[2];
+      _ctrl[7].vertex = points[2];
+      _ctrl[8].vertex = points[2];
     }
     break;
   case patch::CapType::InvertedEndCap:
     {
       setDims(5, 3);
-      _ctrl[0].vertex = p[4];
-      _ctrl[1].vertex = p[3];
-      _ctrl[2].vertex = p[2];
-      _ctrl[3].vertex = p[1];
-      _ctrl[4].vertex = p[0];
-      _ctrl[5].vertex = p[3];
-      _ctrl[6].vertex = p[3];
-      _ctrl[7].vertex = p[2];
-      _ctrl[8].vertex = p[1];
-      _ctrl[9].vertex = p[1];
-      _ctrl[10].vertex = p[3];
-      _ctrl[11].vertex = p[3];
-      _ctrl[12].vertex = p[2];
-      _ctrl[13].vertex = p[1];
-      _ctrl[14].vertex = p[1];
+      _ctrl[0].vertex = points[4];
+      _ctrl[1].vertex = points[3];
+      _ctrl[2].vertex = points[2];
+      _ctrl[3].vertex = points[1];
+      _ctrl[4].vertex = points[0];
+      _ctrl[5].vertex = points[3];
+      _ctrl[6].vertex = points[3];
+      _ctrl[7].vertex = points[2];
+      _ctrl[8].vertex = points[1];
+      _ctrl[9].vertex = points[1];
+      _ctrl[10].vertex = points[3];
+      _ctrl[11].vertex = points[3];
+      _ctrl[12].vertex = points[2];
+      _ctrl[13].vertex = points[1];
+      _ctrl[14].vertex = points[1];
     }
     break;
   case patch::CapType::Cylinder:
@@ -1220,7 +1176,7 @@ void Patch::ConstructSeam(patch::CapType eType, Vector3* p, std::size_t width)
         ++mid;
         for(std::size_t i = width; i != width + 2; ++i)
         {
-          p[i] = p[width - 1];
+          points[i] = points[width - 1];
         }
       }
 
@@ -1228,7 +1184,7 @@ void Patch::ConstructSeam(patch::CapType eType, Vector3* p, std::size_t width)
         PatchControlIter pCtrl = _ctrl.begin();
         for(std::size_t i = 0; i != _height; ++i, pCtrl += _width)
         {
-          pCtrl->vertex = p[i];
+          pCtrl->vertex = points[i];
         }
       }
       {
@@ -1236,7 +1192,7 @@ void Patch::ConstructSeam(patch::CapType eType, Vector3* p, std::size_t width)
         std::size_t h = _height - 1;
         for(std::size_t i = 0; i != _height; ++i, pCtrl += _width)
         {
-          pCtrl->vertex = p[h + (h - i)];
+          pCtrl->vertex = points[h + (h - i)];
 
           if (i == _height - 1) break; // prevent iterator from being incremented post bounds
         }
@@ -1804,13 +1760,13 @@ void Patch::constructPlane(const AABB& aabb, int axis, std::size_t width, std::s
 // constDim will be the dimension which is held constant for each patch row,
 // matching to the view vector, e.g. Z for the XY viewtype
 // It is ensured that dim1 < dim2
-inline void assignDimsForViewType(EViewType viewType, std::size_t& dim1, std::size_t& dim2, std::size_t& constDim)
+inline void assignDimsForViewType(OrthoOrientation viewType, std::size_t& dim1, std::size_t& dim2, std::size_t& constDim)
 {
     switch (viewType)
     {
-        case XY: constDim = 2; break; // z coordinate is incremented each patch row
-        case YZ: constDim = 0; break; // x coordinate is incremented each patch row
-        case XZ: constDim = 1; break; // y coordinate is incremented each patch row
+        case OrthoOrientation::XY: constDim = 2; break; // z coordinate is incremented each patch row
+        case OrthoOrientation::YZ: constDim = 0; break; // x coordinate is incremented each patch row
+        case OrthoOrientation::XZ: constDim = 1; break; // y coordinate is incremented each patch row
     };
 
     // Calculate the other two dimensions, such that colDim1 < colDim2
@@ -1823,7 +1779,7 @@ inline void assignDimsForViewType(EViewType viewType, std::size_t& dim1, std::si
     }
 }
 
-void Patch::constructBevel(const AABB& aabb, EViewType viewType)
+void Patch::constructBevel(const AABB& aabb, OrthoOrientation viewType)
 {
     Vector3 vPos[3] =
     {
@@ -1857,13 +1813,13 @@ void Patch::constructBevel(const AABB& aabb, EViewType viewType)
         }
     }
 
-	if (viewType == XZ)
+	if (viewType == OrthoOrientation::XZ)
 	{
 		invertMatrix();
 	}
 }
 
-void Patch::constructEndcap(const AABB& aabb, EViewType viewType)
+void Patch::constructEndcap(const AABB& aabb, OrthoOrientation viewType)
 {
     Vector3 vPos[3] =
     {
@@ -1901,17 +1857,17 @@ void Patch::constructEndcap(const AABB& aabb, EViewType viewType)
         }
     }
 
-	if (viewType != XZ)
+	if (viewType != OrthoOrientation::XZ)
 	{
 		invertMatrix();
 	}
 }
 
-void Patch::ConstructPrefab(const AABB& aabb, EPatchPrefab eType, EViewType viewType, std::size_t width, std::size_t height)
+void Patch::ConstructPrefab(const AABB& aabb, EPatchPrefab eType, OrthoOrientation viewType, std::size_t width, std::size_t height)
 {
     if (eType == ePlane)
     {
-        constructPlane(aabb, viewType, width, height);
+        constructPlane(aabb, static_cast<int>(viewType), width, height);
     }
     else if (eType == eBevel)
     {
@@ -2114,7 +2070,7 @@ void Patch::ConstructPrefab(const AABB& aabb, EPatchPrefab eType, EViewType view
 			insertRemove(true, false, true);
 		}
 
-		if (viewType == XZ)
+		if (viewType == OrthoOrientation::XZ)
 		{
 			invertMatrix();
 		}

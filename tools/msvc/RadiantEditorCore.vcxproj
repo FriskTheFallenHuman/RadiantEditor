@@ -1083,7 +1083,6 @@
     <Import Project="properties\RadiantEditor Base Debug Win32.props" />
     <Import Project="properties\RadiantEditor Module DLL.props" />
     <Import Project="properties\RadiantEditor Core Library.props" />
-    <Import Project="properties\libxml2.props" />
     <Import Project="properties\GLEW.props" />
     <Import Project="properties\ftgl.props" />
     <Import Project="properties\zlib.props" />
@@ -1095,7 +1094,6 @@
     <Import Project="properties\RadiantEditor Base Release Win32.props" />
     <Import Project="properties\RadiantEditor Module DLL.props" />
     <Import Project="properties\RadiantEditor Core Library.props" />
-    <Import Project="properties\libxml2.props" />
     <Import Project="properties\GLEW.props" />
     <Import Project="properties\ftgl.props" />
     <Import Project="properties\zlib.props" />
@@ -1107,7 +1105,6 @@
     <Import Project="properties\RadiantEditor Base Debug x64.props" />
     <Import Project="properties\RadiantEditor Module DLL.props" />
     <Import Project="properties\RadiantEditor Core Library.props" />
-    <Import Project="properties\libxml2.props" />
     <Import Project="properties\GLEW.props" />
     <Import Project="properties\ftgl.props" />
     <Import Project="properties\zlib.props" />
@@ -1119,7 +1116,6 @@
     <Import Project="properties\RadiantEditor Base Release x64.props" />
     <Import Project="properties\RadiantEditor Module DLL.props" />
     <Import Project="properties\RadiantEditor Core Library.props" />
-    <Import Project="properties\libxml2.props" />
     <Import Project="properties\GLEW.props" />
     <Import Project="properties\ftgl.props" />
     <Import Project="properties\zlib.props" />
@@ -1138,7 +1134,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(PrecompiledHeaderFile)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -1152,7 +1148,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(PrecompiledHeaderFile)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -1168,7 +1164,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(PrecompiledHeaderFile)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -1187,7 +1183,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>precompiled.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>%(PrecompiledHeaderFile)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
