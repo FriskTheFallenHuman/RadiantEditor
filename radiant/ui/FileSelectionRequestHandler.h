@@ -19,7 +19,7 @@ private:
 
 	// The mapping between type and last viewed path
 	// like "map" => "/usr/local/game/doom3/maps/"
-	// and "prefab" => "~/.doom3/darkmod/prefabs/"
+	// and "prefab" => "~/.doom3/base/prefabs/"
 	std::map<std::string, std::string> _lastDirs;
 
 public:

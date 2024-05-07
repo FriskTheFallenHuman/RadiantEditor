@@ -20,12 +20,12 @@ class MapResource :
 private:
     scene::IMapRootNodePtr _mapRoot;
 
-    // Contains the absolute base path (e.g. c:/games/darkmod/) if the resourcePath
+    // Contains the absolute base path (e.g. c:/games/doom3/) if the resourcePath
     // points to a directory which is part of the VFS search paths. 
     // Will be an empty string if the resource is pointing to a path outside the VFS.
 	std::string _path;
 
-    // Either contains the path relative to the base path (e.g. "maps/arkham.map")
+    // Either contains the path relative to the base path (e.g. "maps/game/mars_city1.map")
     // or the full absolute path to the map (in case the resource path 
     // is pointing to a path outside the VFS)
 	std::string _name;

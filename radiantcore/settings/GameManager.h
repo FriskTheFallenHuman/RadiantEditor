@@ -46,13 +46,13 @@ public:
 	std::string getUserEnginePath() override;
 
 	/**
-	 * greebo: Gets the mod path (e.g. ~/.doom3/gathers/).
+	 * greebo: Gets the mod path (e.g. ~/.doom3/d3xp/).
 	 * Returns the mod base path if the mod path itself is empty.
 	 */
 	const std::string& getModPath() const override;
 
 	/**
-	 * greebo: Returns the mod base path (e.g. ~/.doom3/darkmod/),
+	 * greebo: Returns the mod base path (e.g. ~/.doom3/base/),
 	 * can be an empty string if fs_game_base is not set.
 	 */
 	const std::string& getModBasePath() const override;

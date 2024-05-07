@@ -10,7 +10,7 @@ namespace decl
 
 /**
  * Verifies and extracts the relative save path from the the given full path to a decl file.
- * E.g. The full path "c:/games/darkmod/skins/test.skin" will be converted to "test.skin" when declFolder is "skins/".
+ * E.g. The full path "c:/games/doom3/base/skins/test.skin" will be converted to "test.skin" when declFolder is "skins/".
  *
  * The declFolder is the folder relative to the mod path, like: "materials/"
  * The given path is verified to end with the given extension (with or without the dot, e.g. "mtr")
